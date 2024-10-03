@@ -193,3 +193,11 @@ tf-idf-similarity: TF-IDF（Term Frequency-Inverse Document Frequency）を計�
 matrix: 行列演算のためのライブラリです。
 stopwords-filter: 一般的な単語（ストップワード）を除去します。
 httparty: HTTP リクエストを簡単に行うためのgemです（OpenAI APIの使用例）。
+
+
+### 画面遷移図
+https://www.figma.com/design/363Rw5sImKcIuiEAXao282/Untitled?node-id=0-1&t=3ls0vHbDcqxEGlqS-1
+
+
+
+
