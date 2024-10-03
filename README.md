@@ -198,6 +198,7 @@ httparty: HTTP リクエストを簡単に行うためのgemです（OpenAI API�
 ### 画面遷移図
 https://www.figma.com/design/363Rw5sImKcIuiEAXao282/Untitled?node-id=0-1&t=3ls0vHbDcqxEGlqS-1
 
-
+### ER図
+https://dbdiagram.io/d/amuamucommu-66fbcc04fb079c7ebdf2a87d
 
 
