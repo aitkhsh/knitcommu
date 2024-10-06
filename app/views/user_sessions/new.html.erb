@@ -21,6 +21,13 @@
 
           <%= f.submit t('.login'), class: "btn btn-secondary" %>
         <% end %>
+
+        <%= link_to auth_at_provider_path(provider: :github), class: "btn btn-light" do %>
+          <i class="fab fa-github mr-2"></i>
+            <span class="has-text-weight-medium">Sign in with Github</span>
+          <% end %>
+        </div>
+
         <div class='text-center'>
           <%= link_to t('.to_register_page'), new_user_path %>
           <%= link_to t('.password_forget'), '#' %>
