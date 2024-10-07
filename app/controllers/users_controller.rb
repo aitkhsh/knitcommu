@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to profiles_path, success: t("user_sessions.create.success")
     else
       render :new
     end
