@@ -9,3 +9,6 @@ ja:
         first_name: 名
         password: パスワード
         password_confirmation: パスワード確認
+      profile:
+        name: 名前
+        body: 自己紹介
