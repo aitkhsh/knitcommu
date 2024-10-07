@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_05_103544) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_06_085255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,15 +23,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_05_103544) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remote_avatar_url"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "profiles", "users"
 end

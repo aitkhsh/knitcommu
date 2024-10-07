@@ -1,4 +1,7 @@
 ja:
+  defaults:
+    flash_message:
+      require_login: ログインしてください
   helpers:
     submit:
       create: 登録
@@ -13,6 +16,8 @@ ja:
       login: ログイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログイン成功しました！
   users:
     new:
       title: ユーザー登録
@@ -21,3 +26,4 @@ ja:
     login: ログイン
     logout: ログアウト
     mypage: マイページ
+    profile_index: みんなの広場
