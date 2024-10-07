@@ -17,11 +17,17 @@ ja:
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
     create:
-      success: ログイン成功しました！
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
   users:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
   header:
     login: ログイン
     logout: ログアウト
