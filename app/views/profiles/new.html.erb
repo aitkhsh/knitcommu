@@ -6,6 +6,7 @@
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-80 lg:max-w-3xl">
       <%= form_with model: @profile, class: "new_profile" do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
         <div>
           <%= f.label :name, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
           <div class="mt-2">
