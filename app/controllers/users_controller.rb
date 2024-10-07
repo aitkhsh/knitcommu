@@ -8,9 +8,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to profiles_path, success: t("user_sessions.create.success")
+      redirect_to profiles_path, success: t('users.create.success')
     else
-      render :new
+      flash.now[:danger] = t('users.create.failure')
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+
+      render :new, status: :unprocessable_entity
     end
   end
 
