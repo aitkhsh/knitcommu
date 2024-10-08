@@ -9,9 +9,9 @@
     <!-- 掲示板一覧 -->
     <div class="grid grid-cols-4 gap-4">
       <% if @profiles.present? %>
-        <% render @profiles %>
-    <% else %>
-      <div class="mb-3">掲示板がありません</div>
-    <% end %>
-      </div>
+        <%= render @profiles %>
+      <% else %>
+        <div class="mb-3">掲示板がありません</div>
+      <% end %>
+    </div>
 </div>
