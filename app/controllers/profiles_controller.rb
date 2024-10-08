@@ -17,6 +17,30 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
+  def edit
+    @profile = current_user.profiles.find(params[:id])
+  end
+
+  def update
+    @profile = current_user.profiles.find(params[:id])
+    if @profile.update(profile_params)
+      redirect_to profile_path(@profile), success: t('defaults.flash_message.updated', item: Profile.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Profile.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    profile = current_user.profiles.find(params[:id])
+    profile.destroy!
+    redirect_to profiles_path, success: t('defaults.flash_message.deleted', item: Profile.model_name.human), status: :see_other
+  end
+
   private
 
   def profile_params
