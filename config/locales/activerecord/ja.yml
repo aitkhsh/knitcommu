@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      profile: プロフィール
+      comment: コメント
     attributes:
       user:
         email: メールアドレス
@@ -13,3 +15,5 @@ ja:
         name: 名前
         body: 自己紹介
         profile_image: プロフィール写真
+      comment:
+        body: コメント
