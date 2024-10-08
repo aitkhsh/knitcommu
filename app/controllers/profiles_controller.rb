@@ -19,6 +19,8 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @comment = Comment.new
+    @comments = @profile.comments.includes(:user).order(created_at: :desc)
   end
 
   def edit
