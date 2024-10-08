@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"><%= t('.title') %></h2>
+    </div>
+
+    <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+      <div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
+        <%= image_tag @profile.profile_image.url if @profile.profile_image.present?%>
+      </div>
+      <div class="text-center mt-2">
+        <h2 class="font-semibold"><%= @profile.name %></h2>
+        <p class="text-gray-500"><%= @profile.body %></p>
+      </div>
+      <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
+        <% if current_user.own?(@profile) %>
+          <div class="flex space-x-4">
+            <%= link_to edit_profile_path(@profile), id: "button-edit-#{@profile.id}", class: "p-2 text-white bg-blue-500 rounded hover:bg-blue-600" do %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to profile_path(@profile), id: "button-delete-#{@profile.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, class: "p-2 text-white bg-red-500 rounded hover:bg-red-600" do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </ul>
+      <div class="p-4 border-t mx-8 mt-2">
+          <button class="w-auto min-w-[150px] block mx-auto rounded-full bg-pink-500 hover:shadow-lg font-semibold text-white px-6 py-4">Follow</button>
+      </div>
+    </div>
+  </div>
+</div>
+<%# コメントフォーム %>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <table class="table">
+        <tbody id="table-comment">
+          <%# コメント一覧 %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

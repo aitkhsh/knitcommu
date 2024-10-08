@@ -1,8 +1,14 @@
 ja:
   defaults:
+    create: 作成
+    post: 投稿
+    delete_confirm: 削除しますか？
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
       require_login: ログインしてください
   helpers:
     submit:
@@ -36,3 +42,13 @@ ja:
     mypage: マイページ
     profile_index: みんなの広場
     create_profile: プロフィール作成
+  profiles:
+    new: 
+      title: プロフィール作成
+    show: 
+      title: プロフィール詳細
+    index: 
+      title: プロフィール一覧
+    edit: 
+      title: プロフィール編集
+    
