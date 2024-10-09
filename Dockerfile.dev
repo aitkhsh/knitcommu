@@ -14,5 +14,3 @@ RUN mkdir /myapp
 WORKDIR /myapp
 RUN gem install bundler
 COPY . /myapp
-EXPOSE 3000
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
