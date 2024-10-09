@@ -1,4 +1,4 @@
-FROM ruby:3.2.3
+FROM ruby:3.2.5
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 RUN apt-get update -qq \
@@ -14,3 +14,5 @@ RUN mkdir /myapp
 WORKDIR /myapp
 RUN gem install bundler
 COPY . /myapp
+EXPOSE 3000
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
