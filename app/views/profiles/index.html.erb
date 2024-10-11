@@ -2,6 +2,10 @@
   <!-- ... -->
   <!-- 検索フォーム -->
     <%= render 'shared/search_profile_form', search_form: @search_form %>
+    <div id="tag-area" class="col-md-3">
+      <h2 class="h4">人気のあるタグ</h2>
+      <%= render Tag.popular %>
+    </div>
     <!-- 掲示板一覧 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <% if @profiles.present? %>
