@@ -15,5 +15,6 @@ ja:
         name: 名前
         body: 自己紹介
         profile_image: プロフィール写真
+        tag_names: タグ
       comment:
         body: コメント

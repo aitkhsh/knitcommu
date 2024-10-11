@@ -1,5 +1,13 @@
 class ProfilesController < ApplicationController
+  before_action :require_login, only: %i[new create]
+  before_action :set_profile, only: %i[edit update destroy]
+
   def index
+    profiles = if (tag_name = params[:tag_name])
+      Profile.with_tag(tag_name)
+    else
+      Profile.all
+    end
     @profiles = Profile.includes(:user)
   end
 
@@ -8,8 +16,8 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = current_user.profiles.build(profile_params)
-    if @profile.save
+    @profile = current_user.profiles.new(profile_params)
+    if @profile.save_with_tags(tag_names: params.dig(:profile, :tag_names).split(',').uniq)
       redirect_to profiles_path, success: t("defaults.flash_message.created", item: Profile.model_name.human)
     else
       flash.now[:danger] = t("defaults.flash_message.not_created", item: Profile.model_name.human)
@@ -28,8 +36,8 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = current_user.profiles.find(params[:id])
-    if @profile.update(profile_params)
+    @post.assign_attributes(post_params)
+    if @profile.save_with_tags(tag_names: params.dig(:profile, :tag_names).split(',').uniq)
       redirect_to profile_path(@profile), success: t('defaults.flash_message.updated', item: Profile.model_name.human)
     else
       flash.now[:danger] = t('defaults.flash_message.not_updated', item: Profile.model_name.human)
@@ -47,5 +55,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:name, :body, :profile_image, :profile_image_cache).merge(user_id: current_user.id)
+  end
+
+  def set_profile
+    @profile = current_user.profiles.find(params[:id])
   end
 end

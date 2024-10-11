@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_08_165428) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_10_160854) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,10 +43,29 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_165428) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "profiletags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profiletags_on_profile_id"
+    t.index ["tag_id", "profile_id"], name: "index_profiletags_on_tag_id_and_profile_id", unique: true
+    t.index ["tag_id"], name: "index_profiletags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remote_avatar_url"
@@ -56,4 +75,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_165428) do
   add_foreign_key "comments", "profiles"
   add_foreign_key "comments", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "profiletags", "profiles"
+  add_foreign_key "profiletags", "tags"
 end

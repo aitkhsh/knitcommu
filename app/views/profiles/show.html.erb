@@ -12,6 +12,9 @@
         <h2 class="font-semibold"><%= @profile.name %></h2>
         <p class="text-gray-500"><%= @profile.body %></p>
       </div>
+      <div class="card-footer">
+	      <%= render @profile.tags %>
+      </div>
       <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
         <% if current_user.own?(@profile) %>
           <div class="flex space-x-4">
