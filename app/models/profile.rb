@@ -12,6 +12,7 @@ class Profile < ApplicationRecord
   scope :name_contain, ->(word) { where('name LIKE ?', "%#{word}%") }
   scope :body_contain, ->(word) { where('profiles.body LIKE ?', "%#{word}%") }
   scope :username_contain, ->(word) { joins(user: :profile).where('profiles.name LIKE ?', "%#{word}%") }
+  scope :tag_contain, ->(word) { joins(:tags).where('tags.name LIKE ?', "%#{word}%")}
 
 
   def save_with_tags(tag_names:)
