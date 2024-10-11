@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :require_login, only: %i[new create]
   before_action :set_profile, only: %i[edit update destroy]
+  before_action :set_search_profiles_form, only: %i[index search]
 
   def index
     profiles = if (tag_name = params[:tag_name])
@@ -51,6 +52,10 @@ class ProfilesController < ApplicationController
     redirect_to profiles_path, success: t('defaults.flash_message.deleted', item: Profile.model_name.human), status: :see_other
   end
 
+  def search
+    @profiles = @search_form.search.includes(:user)
+  end
+
   private
 
   def profile_params
@@ -59,5 +64,13 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = current_user.profiles.find(params[:id])
+  end
+
+  def set_search_profiles_form
+    @search_form = SearchProfilesForm.new(search_profile_params)
+  end
+
+  def search_profile_params
+    params.fetch(:q, {}).permit(:name_or_body, :username)
   end
 end
