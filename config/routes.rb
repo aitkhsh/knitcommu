@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :profiles, only: %i[index new create show edit destroy] do
     resources :comments, only: %i[create edit destroy], shallow: true
+    collection do
+      get :search
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
