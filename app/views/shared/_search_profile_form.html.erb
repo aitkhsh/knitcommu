@@ -1,5 +1,6 @@
 <%= form_with model: search_form, url: search_profiles_path, scope: :q, class: 'input-group mb-3', method: :get do |f| %>
   <%= f.search_field :name_or_body, id: 'search_field_of_profile', class: 'input input-bordered input-primary', placeholder: 'プロフィール' %>
   <%= f.search_field :username, id: 'search_field_of_user', class: 'input input-bordered input-primary', placeholder: 'ユーザー' %>
+  <%= f.search_field :tag, id: 'search_field_of_tag', class: 'input input-bordered input-primary', placeholder: 'タグ' %>
   <%= f.submit 'Search', class: 'btn btn-outline-success' %>
 <% end %>

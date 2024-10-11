@@ -4,12 +4,12 @@ class ProfilesController < ApplicationController
   before_action :set_search_profiles_form, only: %i[index search]
 
   def index
-    profiles = if (tag_name = params[:tag_name])
+    @profiles = if (tag_name = params[:tag_name])
       Profile.with_tag(tag_name)
     else
-      Profile.all
+      Profile.includes(:user)
     end
-    @profiles = Profile.includes(:user)
+    # @profiles = Profile.includes(:user)
   end
 
   def new
@@ -71,6 +71,6 @@ class ProfilesController < ApplicationController
   end
 
   def search_profile_params
-    params.fetch(:q, {}).permit(:name_or_body, :username)
+    params.fetch(:q, {}).permit(:name_or_body, :username, :tag)
   end
 end
