@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+	  <div>
+	    <h3 style="display: inline;"><%= render @comment %></h3>
+      <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+	      <% prepare_meta_tags @comment %>
+        <% twitter_share_url = "https://twitter.com/share?url= #{CGI.escape(comment_url(@comment))}" %>
+        <%= link_to twitter_share_url, target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+        ## コメント送信！
+        <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
+        <% end %>
+			</div>
+		</div>
+    <ul class="list-inline">
+	    <li class="list-inline-item"><%= render @profile %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+	<div class="col-lg-8 offset-lg-2">
+	  <table class="table">
+	    <tbody id="table-comment">
+	      <%= render @comments %>
+      </tbody>
+    </table>
+  </div>
+</div>
