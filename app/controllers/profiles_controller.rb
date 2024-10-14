@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :require_login, only: %i[new create]
   before_action :set_profile, only: %i[edit update destroy]
   before_action :set_search_profiles_form, only: %i[index search]
-  skip_before_action :require_login, only: %i[index]
+  skip_before_action :require_login, only: %i[index show]
   helper_method :prepare_meta_tags
 
   def index
