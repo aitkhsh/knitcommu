@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
       title: comment.body,
       description: 'ニットを通してコミュニティを編むアプリです。',
       type: 'website',
-      url: comment_url,
+      url: request.original_url,
       image: image_url,
       locale: 'ja-JP'
     }, twitter: {
