@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   helper_method :prepare_meta_tags
+  skip_before_action :require_login, only: %i[show]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -26,9 +27,9 @@ class CommentsController < ApplicationController
   def prepare_meta_tags(comment)
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(comment.body)}"
     set_meta_tags og: {
-      site_name: '詐欺師の手帳',
+      site_name: 'あむ編むcommu',
       title: comment.body,
-      description: 'ユーザーによる詐欺被害の投稿です',
+      description: 'ニットを通してコミュニティを編むアプリです。',
       type: 'website',
       url: comment_url,
       image: image_url,
