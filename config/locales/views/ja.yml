@@ -40,15 +40,15 @@ ja:
     login: ログイン
     logout: ログアウト
     mypage: マイページ
-    profile_index: みんなの広場
-    create_profile: プロフィール作成
-  profiles:
+    board_index: ありがとう一覧
+    create_board: 感謝状作成
+  boards:
     new: 
-      title: プロフィール作成
+      title: 感謝状作成
     show: 
-      title: プロフィール詳細
+      title: 感謝状詳細
     index: 
-      title: プロフィール一覧
+      title: 感謝状一覧
     edit: 
-      title: プロフィール編集
+      title: 感謝状編集
     

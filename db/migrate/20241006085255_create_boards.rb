@@ -1,7 +1,7 @@
-class CreateProfiles < ActiveRecord::Migration[7.2]
+class CreateBoards < ActiveRecord::Migration[7.2]
   def change
-    create_table :profiles do |t|
-      t.string :name, null: false
+    create_table :boards do |t|
+      t.string :title, null: false
       t.text :body, null: false
       t.references :user, foreign_key: true
 

@@ -23,34 +23,34 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_10_160854) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "profile_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_comments_on_profile_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "boards", force: :cascade do |t|
+    t.string "title", null: false
     t.text "body", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_image"
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.string "board_image"
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
-  create_table "profiletags", force: :cascade do |t|
+  create_table "boardtags", force: :cascade do |t|
     t.bigint "tag_id", null: false
-    t.bigint "profile_id", null: false
+    t.bigint "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_profiletags_on_profile_id"
-    t.index ["tag_id", "profile_id"], name: "index_profiletags_on_tag_id_and_profile_id", unique: true
-    t.index ["tag_id"], name: "index_profiletags_on_tag_id"
+    t.index ["board_id"], name: "index_boardtags_on_board_id"
+    t.index ["tag_id", "board_id"], name: "index_boardtags_on_tag_id_and_board_id", unique: true
+    t.index ["tag_id"], name: "index_boardtags_on_tag_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "board_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_comments_on_board_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -72,9 +72,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_10_160854) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "comments", "profiles"
+  add_foreign_key "boards", "users"
+  add_foreign_key "boardtags", "boards"
+  add_foreign_key "boardtags", "tags"
+  add_foreign_key "comments", "boards"
   add_foreign_key "comments", "users"
-  add_foreign_key "profiles", "users"
-  add_foreign_key "profiletags", "profiles"
-  add_foreign_key "profiletags", "tags"
 end

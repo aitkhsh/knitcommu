@@ -1,6 +1,6 @@
 <tr id="comment-<%= comment.id %>">
   <td>
-    <%= image_tag(@profile.profile_image.url, class: "rounded-full w-20 h-20") if @profile.profile_image.present? %>
+    <%= image_tag(@board.board_image.url, class: "rounded-full w-20 h-20") if @board.board_image.present? %>
   </td>
   <td>
     <h3 class="small"><%= comment.user.decorate.full_name %></h3>

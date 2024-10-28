@@ -1,9 +1,9 @@
 <div class="container mx-auto px-4">
   <!-- ... -->
   <!-- 検索フォーム -->
-    <%= render 'shared/search_profile_form', search_form: @search_form %>
+    <%= render 'shared/search_board_form', search_form: @search_form %>
     <!-- 掲示板一覧 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <%= render @profiles %>
+      <%= render @boards %>
     </div>
 </div>
