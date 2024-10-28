@@ -7,21 +7,21 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to comment_path(@comment.id), success: t('defaults.flash_message.created', item: Comment.model_name.human)
     else
-      redirect_to profile_path(comment.profile), danger: t('defaults.flash_message.not_created', item: Comment.model_name.human)
+      redirect_to board_path(comment.board), danger: t('defaults.flash_message.not_created', item: Comment.model_name.human)
     end
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @board = Board.find(params[:id])
     @comment = Comment.find(params[:id])  # ボードに関連するコメントを取得
     prepare_meta_tags(@comment) #ここで渡された引数が、下記のprepare_meta_tagsアクションにいく。
-    @comments = @profile.comments.includes(:user).order(created_at: :desc)
+    @comments = @board.comments.includes(:user).order(created_at: :desc)
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body).merge(profile_id: params[:profile_id])
+    params.require(:comment).permit(:body).merge(board_id: params[:board_id])
   end
 
   def prepare_meta_tags(comment)

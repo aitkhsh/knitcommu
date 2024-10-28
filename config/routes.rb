@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   resources :users, only: %i[new create]
-  resources :profiles, only: %i[index new create show edit destroy] do
+  resources :boards, only: %i[index new create show edit destroy] do
     resources :comments, only: %i[create show edit destroy], shallow: true
     collection do
       get :search
