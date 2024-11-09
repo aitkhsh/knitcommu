@@ -10,12 +10,17 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   resources :users, only: %i[new create]
+  resources :pictures, only: %i[index create] do
+    post :select_image, on: :collection # select_imageアクション用のルート
+  end
   resources :boards, only: %i[index new create show edit destroy] do
     resources :comments, only: %i[create show edit destroy], shallow: true
     collection do
       get :search
     end
   end
+  get "board_sessions/save", to: "board_sessions#save"
+  get "board_sessions/clear", to: "board_sessions#clear"
   get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
