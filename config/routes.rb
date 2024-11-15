@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      get :share
+    end
   end
   get "board_sessions/save", to: "board_sessions#save"
   get "board_sessions/clear", to: "board_sessions#clear"
-  get "images/ogp.png", to: "images#ogp", as: "images_ogp"
+  #get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
