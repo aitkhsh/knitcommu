@@ -53,6 +53,8 @@ class OpenAiService
       Rails.logger.error "An unexpected error occurred: #{e.message}"
       tempfile&.close!
       nil # 予期しないエラーが発生した場合もnilを返す
+
+    # ensureブロックを削除し、エラー時のみファイルを削除
     end
   end
 end

@@ -73,9 +73,6 @@ class PicturesController < ApplicationController
         redirect_to pictures_path and return
       end
 
-      # ファイルを再度読み込みCarrierWaveに渡す
-      # file_for_upload = File.open(image_file.path)
-
       # Boardレコードを作成し、画像や他の情報も保存
       board = Board.new(
         title: params[:title],

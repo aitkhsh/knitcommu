@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: %i[edit update destroy]
   before_action :set_search_boards_form, only: %i[index search]
   skip_before_action :require_login, only: %i[index show]
-  helper_method :prepare_meta_tags
+  # skip_before_action :prepare_meta_tags, only: :share
 
   def index
     @boards = if (tag_name = params[:tag_names])
@@ -21,7 +21,7 @@ class BoardsController < ApplicationController
     session[:tag_names] = nil
     session[:image_file_path] = nil
     session[:image_url] = nil
-    
+
     logger.debug "Session title: #{session[:title]}"
     logger.debug "Session body: #{session[:body]}"
     logger.debug "Session tag_names: #{session[:tag_names]}"
@@ -88,6 +88,108 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
+    current_time = params[:time]
+    # 各投稿の内容に基づいたメタタグ設定
+    set_meta_tags(
+      twitter: {
+                    title: "感謝状が届きました💖",
+                    card: "summary_large_image",
+                    url: "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}",
+                    image:  "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png"
+  }
+    )
+  end
+
+  def share
+    require 'aws-sdk-s3'
+
+    @board = Board.find(params[:id])
+    current_time = Time.now.strftime("%Y%m%d%H%M%S")
+
+    require 'open-uri'
+    require 'stringio'
+
+    # 背景画像のパスを指定
+    background_path = Rails.root.join('public', 'ogp_image.png')
+    canvas = MiniMagick::Image.open(background_path)
+
+    # 背景画像のサイズを取得
+    background_width = canvas.width
+    background_height = canvas.height
+
+
+    # ボード画像を取得
+    overlay_image_url = @board.board_image.url
+
+    if Rails.env.production?
+      overlay_image = MiniMagick::Image.open(URI.open(overlay_image_url))
+    else
+      # 開発環境 (publicフォルダ) の場合、publicディレクトリに合わせた絶対パスに変換
+      local_path = Rails.root.join("public", overlay_image_url.delete_prefix("/")) # パス先頭の「/」を除去
+      overlay_image = MiniMagick::Image.open(File.open(local_path))
+    end
+
+
+    # ボード画像を必要に応じてリサイズ
+    overlay_image.resize "500x500" # 例として500x500にリサイズ
+
+    # 中央配置するための座標を計算
+    x_position = (background_width - overlay_image.width) / 2
+    y_position = (background_height - overlay_image.height) / 2
+
+    # 背景画像の中央にボード画像を合成
+    canvas = canvas.composite(overlay_image) do |c|
+      c.geometry "+#{x_position}+#{y_position}" # 中央に配置
+    end
+
+    # メモリ上に画像を書き込む
+    output = StringIO.new
+    canvas.write(output)
+
+    # S3リソースを初期化
+    s3_resource = Aws::S3::Resource.new(
+      region: ENV['S3_REGION'],
+      access_key_id: ENV['S3_ACCESS_KEY_ID'],
+      secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
+    )
+    # バケットとオブジェクトキーを設定
+    s3_bucket = s3_resource.bucket(ENV['S3_BUCKET_NAME'])
+    object_key = "#{@board.id}_#{current_time}.png"
+
+
+    # 古い画像の削除
+    s3_bucket.objects(prefix: "#{@board.id}_").delete
+
+    # 新しい画像のアップロード
+    output.rewind # StringIOのポインタを先頭に戻す
+    s3_bucket.object(object_key).put(body: output.read, content_type: "image/png")
+    uploaded_object = s3_bucket.object(object_key)
+    Rails.logger.debug "=== Debug: Object URL: #{uploaded_object.public_url} ==="
+
+    share_image_url = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{object_key}"
+
+    # set_meta_tags(
+    #   title: "感謝状が届きました💖",
+    #   description: @board.body,
+    #   image: share_image_url, # S3 オブジェクトの URL を設定
+    #   twitter: {
+    #     card: "summary_large_image"
+    #   }
+    # )
+
+    set_meta_tags   twitter: {
+                    title: "感謝状が届きました💖",
+                    card: "summary_large_image",
+                    url: "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}",
+                    image:  "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{object_key}"
+                  }
+
+    # Twitterシェア用のURL生成
+    app_url = "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}"
+    default_text = "#感謝状が届きました💖"
+
+    x_url = "https://x.com/intent/tweet?url=#{CGI.escape(app_url)}&text=#{CGI.escape(default_text)}"
+    redirect_to x_url, allow_other_host: true
   end
 
   def edit
@@ -132,3 +234,4 @@ class BoardsController < ApplicationController
     params.fetch(:q, {}).permit(:title_or_body, :username, :tag)
   end
 end
+
