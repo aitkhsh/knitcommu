@@ -90,13 +90,25 @@ class BoardsController < ApplicationController
     @comments = @board.comments.includes(:user).order(created_at: :desc)
     current_time = params[:time]
     # 各投稿の内容に基づいたメタタグ設定
+    # メタタグ設定
     set_meta_tags(
+      title: "感謝状が届きました💖",
+      description: @board.body,
+      image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
+      og: {
+        title: "感謝状が届きました💖",
+        type: "website",
+        image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
+        url: request.original_url,
+        site_name: "あむ編むコミュ！",
+      },
       twitter: {
-                    title: "感謝状が届きました💖",
-                    card: "summary_large_image",
-                    url: "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}",
-                    image:  "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png"
-  }
+        card: "summary_large_image",
+        site: "@aiaipanick",
+        image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
+        title: "感謝状が届きました💖",
+        description: @board.body,
+      }
     )
   end
 

@@ -19,7 +19,7 @@
 	      <%= render @board.tags %>
       </div>
       <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
-        <% if current_user.own?(@board) %>
+        <% if current_user && current_user.own?(@board) %>
           <div class="flex space-x-4">
             <%= link_to edit_board_path(@board), id: "button-edit-#{@board.id}", class: "p-2 text-white bg-blue-500 rounded hover:bg-blue-600" do %>
               <i class="fas fa-pencil-alt"></i>
