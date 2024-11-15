@@ -120,9 +120,14 @@ class BoardsController < ApplicationController
 
     # ボード画像を取得
     overlay_image_url = @board.board_image.url
+    Rails.logger.debug "=== Debug: overlay_image_url: #{overlay_image_url} ==="
 
     if Rails.env.production?
-      overlay_image = MiniMagick::Image.open(URI.open(overlay_image_url))
+      # URI.open から画像データを MiniMagick::Image に渡す
+      file = URI.open(overlay_image_url) # ファイルストリームを取得
+      overlay_image = MiniMagick::Image.read(file.read) # 画像データを読み込む
+      Rails.logger.debug "=== Debug: File type: #{file.class}, Path: #{file.path} ==="
+
     else
       # 開発環境 (publicフォルダ) の場合、publicディレクトリに合わせた絶対パスに変換
       local_path = Rails.root.join("public", overlay_image_url.delete_prefix("/")) # パス先頭の「/」を除去
