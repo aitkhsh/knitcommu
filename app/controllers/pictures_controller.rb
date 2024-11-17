@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  MAX_IMAGES = 3 # 最大生成枚数を定数として定義
+  MAX_IMAGES = 2 # 最大生成枚数を定数として定義
 
   def create
     # 最初の画像生成リクエストの場合のみセッションをクリア
@@ -85,6 +85,8 @@ class PicturesController < ApplicationController
         # 一時ファイルを削除
         image_file.close
         image_file.unlink
+        # 投稿数を計算
+        check_for_reward(current_user)
 
         flash[:notice] = "Boardが作成されました！"
         redirect_to board_path(board)
@@ -103,4 +105,25 @@ class PicturesController < ApplicationController
     params.permit(:body, :tag_names)
   end
 
+  def check_for_reward(current_user)
+
+    # リリース初期段階で Item モデルにバッジを登録
+    # リリース数日後にコメントアウト予定
+    bedges = ['badge1.png', 'badge2.png', 'badge3.png', 'badge4.png', 'badge5.png', 'badge6.png', 'badge7.png', 'badge8.png', 'badge9.png', 'badge10.png', 'badge11.png', 'badge12.png', 'badge13.png']
+
+    bedges.each do |image|
+      Item.find_or_create_by!(
+        image: image
+        )
+    end
+    
+    # 報酬バッジをユーザーに付与
+    batch_count = current_user.boards.count / 3
+
+    if batch_count >= 1
+      # ランダムにアイテムを選択
+      item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
+      UserItem.create!(user_id: current_user.id, item_id: item_id)
+    end
+  end
 end

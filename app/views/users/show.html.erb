@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @user.first_name %> さんのバッジ一覧</h1>
+
+  <% if @user_items.any? %>
+    <ul>
+      <% @user_items.each do |user_item| %>
+        <li>
+          <%= image_tag user_item.item.image, class: 'badge-image', size: '100x100' %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>バッジはありません。</p>
+  <% end %>
+</div>

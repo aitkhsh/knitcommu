@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create show]
 
   def new
     @user = User.new
@@ -13,6 +13,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = t("users.create.failure")
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    # ユーザーに紐付いた user_items を取得
+    @user_items = @user.user_items.includes(:item)
   end
 
   private
