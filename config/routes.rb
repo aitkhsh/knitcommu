@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create show]
   resources :pictures, only: %i[index create] do
     post :select_image, on: :collection # select_imageアクション用のルート
   end

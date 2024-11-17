@@ -88,6 +88,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
+    # prepare_meta_tags(@board)
     current_time = params[:time]
     # 各投稿の内容に基づいたメタタグ設定
     # メタタグ設定
