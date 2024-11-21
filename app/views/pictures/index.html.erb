@@ -2,41 +2,59 @@
 <% if @error.present? %>
   <p class="alert alert-danger"><%= @error %></p>
 <% end %>
+<div class="container mx-auto px-4">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">画像生成ページ</h2>
+    </div>
 
-<%# フォームの表示 %>
-<%= form_with url: pictures_path, method: :post, local: true do |f|  %>
-  <div class="form-group">
-    <%= f.label :title, "ありがとうメッセージ" %>
-    <%= f.text_area :title, value: @title, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body, "ありがとうメッセージ" %>
-    <%= f.text_area :body, value: @body, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :tag, "タグ" %>
-    <%= f.text_field :tag_names, value: @tag, class: "form-control" %>
-  </div>
-  <%= f.submit "画像を生成", class: "btn btn-primary" %>
-<% end %>
+    <div class="flex justify-center min-h-screen bg-yellow-50 mt-4">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm mt-4">
+        <%# フォームの表示 %>
+        <%= form_with url: pictures_path, method: :post, local: true do |f|  %>
+          <div class="form-group">
+            <%= f.label :title, "感謝を伝えたい相手のお名前", class: "font-bold"%>
+            <%= f.text_area :title, value: @title, class: "form-control w-full border-2 border-pink-200/50 rounded-lg p-2 mb-4" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body, "ありがとうメッセージ", class: "font-bold" %>
+            <%= f.text_area :body, value: @body, class: "form-control w-full border-2 border-pink-200/50 rounded-lg p-2 mb-4" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :tag, "タグ", class: "font-bold" %>
+            <%= f.text_field :tag_names, value: @tag, class: "form-control w-full border-2 border-pink-200/50 rounded-lg p-2 mb-4" %>
+          </div>
+          <%= f.submit "画像を生成", class: "btn btn-secondary mb-4" %>
+        <% end %>
+        <%# 画像の表示と選択 %>
+        <div class="text-gray-500 bg-yellow-100/50 text-sm mt-6 p-8 rounded-full">
+          <p> 写真は長押しでまたは右クリックでご自身のブラウザに保存できます。<br>
+          ご自身のブラウザに保存した画像は、お相手に直接送ることができます。<p>
+        </div>
+        <% if @images.any? %>
+          <div class="text-gray-500 bg-pink-100/50 mt-6 p-8 rounded-full">
+            <h3>生成された画像を選択してください:</h3>
+          </div>
+          <%= form_with url: select_image_pictures_path, method: :post, local: true do %>
+            <div class="flex flex-wrap gap-6 px-4">
+              <% @images.each do |image_url| %>
+                <div class="flex items-center">
+                  <%= image_tag image_url, width: 200, class: "rounded-lg shadow-xl mr-2" %>
+                  <%= radio_button_tag :image_url, image_url, false %>
+                </div>
+              <% end %>
+            </div>
 
-<%# 画像の表示と選択 %>
-<% if @images.any? %>
-  <h3>生成された画像を選択してください:</h3>
-  <%= form_with url: select_image_pictures_path, method: :post, local: true do %>
-    <% @images.each do |image_url| %>
-      <div class="image-option">
-        <%= image_tag image_url, width: 200 %>
-        <%= radio_button_tag :image_url, image_url, false %>
+            <%# 隠しフィールドに title, body, tag_names を再送信 %>
+            <%= hidden_field_tag :title, @title %>
+            <%= hidden_field_tag :body, @body %>
+            <%= hidden_field_tag :tag_names, @tag %>
+
+            <%= submit_tag "選択してBoardを作成", class: "btn btn-success" %>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-    
-    <%# 隠しフィールドに title, body, tag_names を再送信 %>
-    <%= hidden_field_tag :title, @title %>
-    <%= hidden_field_tag :body, @body %>
-    <%= hidden_field_tag :tag_names, @tag %>
-
-    <%= submit_tag "選択してBoardを作成", class: "btn btn-success" %>
-  <% end %>
-<% end %>
+    </div>
+  </div>
+</div>
 

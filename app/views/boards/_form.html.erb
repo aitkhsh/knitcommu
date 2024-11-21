@@ -1,28 +1,31 @@
-<%= form_with model: @board, class: "new_board" do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div>
-    <%= f.label :title, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
-    <div class="mt-2">
-    <%= f.text_field :title, value: @board.title, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-  </div>
+<div class="flex justify-center min-h-screen bg-yellow-50">
+  <div class="w-full max-w-lg rounded-lg">
+      <%= form_with model: @board, class: "new_board" do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div>
+          <%= f.label :title, class: "form-label block text-sm font-bold leading-6 text-gray-900 mt-8" %>
+          <%= f.text_field :title, value: @board.title, class: "form-control w-full border-2 border-pink-200/50 rounded-lg mb-4 p-2" %>
+        </div>
 
-  <div>
-    <%= f.label :body, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
-    <div class="mt-2">
-    <%= f.text_area :body, value: @board.body, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-  </div>
+        <div>
+          <%= f.label :body, class: "form-label block text-sm font-bold leading-6 text-gray-900" %>
+          <%= f.text_area :body, value: @board.body, class: "form-control w-full border-2 border-pink-200/50 rounded-lg mb-4 p-2" %>
+        </div>
 
-  <div class="mb-3">
-    <%= f.label :tag_names %>
-    <%= f.text_field :tag_names, value: @tag_names, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",  placeholder: ',で区切って入力してください' %>
-  </div>
+        <div class="mb-3">
+          <%= f.label :tag_names, class: "form-label block text-sm font-bold leading-6 text-gray-900" %>
+          <%= f.text_field :tag_names, value: @tag_names, class: "form-control w-full border-2 border-pink-200/50 rounded-lg mb-4 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2 mb-4",  placeholder: ',で区切って入力してください' %>
+        </div>
 
-  <% if session[:image_file_path].present? %>
-  <div class="mt-2">
-    <%= f.label :board_image, "選択した画像" %><br>
-    <%= image_tag session[:image_file_path], width: 200 %>
-  </div>
-<% end %>
+        <% if session[:image_file_path].present? %>
+        <div class="mt-2">
+          <%= f.label :board_image, "選択した画像" %><br>
+          <%= image_tag session[:image_file_path], width: 200 %>
+        </div>
+      <% end %>
 
-  <%= f.submit nil, class: "btn btn-secondary" %>
-<% end %>
+        <%= f.submit nil, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
