@@ -1,5 +1,5 @@
 <!-- https://gist.github.com/goodreds/5b8a4a2bf11ff67557d38c5e727ea86c -->
-<div id="board-id-<%= board.id %>">
+<!--div id="board-id-<%= board.id %>">
   <div class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
     <div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
       <%= image_tag board.board_image.url if board.board_image.present? %>
@@ -11,6 +11,23 @@
     </div>
     <div class="p-4 border-t mx-8 mt-2">
       <button class="w-auto min-w-[150px] block mx-auto rounded-full bg-pink-500 hover:shadow-lg font-semibold text-white px-6 py-4"><%= link_to "話しかける", board_path(board) %></button>
+    </div>
+  </div>
+</div-->
+
+<div id="board-id-<%= board.id %>">
+  <div class="card bg-base-100 w-full max-w-sm shadow-xl bg-yellow-50">
+      <figure class="w-full object-cover rounded-t-lg">
+        <%= image_tag board.board_image.url if board.board_image.present? %>
+      </figure>
+      <div class="card-body">
+          <h2 class="text-lg font-bold"><%= board.title %></h2>
+          <p class="text-sm text-gray-500"><%= board.body %></p>
+          <p class="text-gray-500"><%= render board.tags %></p>
+      </div>
+    <div class="card-actions justify-end p-4">
+      <button class="btn btn-secondary text-gray-900"><%= link_to "話しかける", board_path(board) %>
+      </button>
     </div>
   </div>
 </div>

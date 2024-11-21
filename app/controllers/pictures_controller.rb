@@ -121,9 +121,11 @@ class PicturesController < ApplicationController
     batch_count = current_user.boards.count / 3
 
     if batch_count >= 1
-      # ランダムにアイテムを選択
-      item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
-      UserItem.create!(user_id: current_user.id, item_id: item_id)
+      batch_count.times do
+        # ランダムにアイテムを選択
+        item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
+        UserItem.create!(user_id: current_user.id, item_id: item_id)
+      end
     end
   end
 end

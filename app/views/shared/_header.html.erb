@@ -1,7 +1,7 @@
 <header>
-  <div class="navbar bg-base-100">
+  <div class="navbar bg-base-100" style="background-color: rgba(254, 249, 195, 0.3);">
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl">あむ編むコミュ！</a>
+      <a class="btn btn-ghost text-xl gray-900">あむ編むコミュ！</a>
     </div>
     <div class="flex-none gap-2">
       <div>
@@ -17,11 +17,11 @@
         </div>
         <ul
           tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2">
           <li><a><%= current_user.decorate.full_name %></a></li>
           <li>
             <a>
-              <%= link_to t('header.mypage'), '#', class: 'dropdown-item' %>
+              <%= link_to t('header.mypage'), user_path(current_user), class: 'dropdown-item' %>
             </a>
           </li>
           <li>
@@ -29,7 +29,6 @@
               <%= link_to t('header.create_board'), new_board_path, class: 'dropdown-item' %>
             </a>
           </li>
-          <li><a>Settings</a></li>
           <li><a><%= link_to t('header.logout'), logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %></a></li>
         </ul>
       </div>
