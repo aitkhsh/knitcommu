@@ -6,7 +6,7 @@
     <h3 class="small"><%= comment.user.decorate.full_name %></h3>
     <p><%= simple_format(comment.body) %></p>
   </td>
-  <% if current_user && current_user.own?(comment) %>
+  <!--% if current_user && current_user.own?(comment) %>
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
@@ -21,5 +21,5 @@
         </li>
       </ul>
     </td>
-  <% end %>
+  <% end %-->
 </tr>

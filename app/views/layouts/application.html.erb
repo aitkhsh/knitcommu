@@ -21,13 +21,15 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
-    <%= render 'shared/flash_message' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div class="hero-overlay" style="background-color: rgba(254, 249, 195, 0.3);" class="text-gray-500">
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+      <%= render 'shared/flash_message' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

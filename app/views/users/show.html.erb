@@ -1,15 +1,23 @@
-<div class="container">
-  <h1><%= @user.first_name %> さんのバッジ一覧</h1>
-
-  <% if @user_items.any? %>
-    <ul>
+<div class="container mx-auto px-4">
+  <div class="text-center mt-10">
+    <h1 class="text-2xl font-bold leading-9 tracking-tight text-gray-900 mb-10">
+      <%= @user.first_name %> マイページ
+    </h1>
+  </div>
+  <div class="text-center mt-10">
+    <h1 class="text-2xl font-bold leading-9 tracking-tight text-gray-900 mb-10">
+      <%= @user.first_name %> アイテム一覧
+    </h1>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center">
+    <% if @user_items.any? %>
       <% @user_items.each do |user_item| %>
-        <li>
-          <%= image_tag user_item.item.image, class: 'badge-image', size: '100x100' %>
-        </li>
+        <div class="mb-10 rounded-lg shadow-xl">
+          <%= image_tag user_item.item.image, class: 'badge-image rounded-lg shadow', size: '150x150' %>
+        </div>
       <% end %>
-    </ul>
-  <% else %>
-    <p>バッジはありません。</p>
-  <% end %>
+    <% else %>
+      <p>取得アイテムはありません。</p>
+    <% end %>
+  </div>
 </div>
