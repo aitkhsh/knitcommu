@@ -15,7 +15,7 @@
   </div>
 </div-->
 
-<div id="board-id-<%= board.id %>">
+<!--div id="board-id-<%= board.id %>">
   <div class="card bg-base-100 w-full max-w-sm shadow-xl bg-yellow-50">
       <figure class="w-full object-cover rounded-t-lg">
         <%= image_tag board.board_image.url if board.board_image.present? %>
@@ -30,4 +30,52 @@
       </button>
     </div>
   </div>
+</div-->
+
+<div id="board-id-<%= board.id %>">
+  <!-- swapをラベルとして使う -->
+  <label class="swap swap-flip text-lg w-full">
+    <!-- チェックボックスが状態を制御 -->
+    <input type="checkbox" class="hidden" />
+
+    <!-- 裏面 (swap-on) -->
+    <div class="swap-on card bg-yellow-50 w-full max-w-sm shadow-xl">
+      <div class="card-body">
+        <h2 class="text-lg font-bold text-base sm:text-lg md:text-xl lg:text-2xl"><%= board.user.first_name %> さんの獲得アイテム</h2>
+        <% if board.user.user_items.any? %>
+          <!-- グリッド: アイテムがある場合 -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center">
+            <% board.user.user_items.each do |user_item| %>
+              <div class="rounded-lg shadow-xl">
+                <%= image_tag user_item.item.image, class: 'badge-image rounded-lg shadow', size: '150x150' %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <!-- 中央揃え: アイテムがない場合 -->
+          <div class="flex items-center justify-center h-24">
+            <p class="text-sm text-gray-500">取得アイテムはありません。</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <!-- 表面 (swap-off) -->
+    <div class="swap-off card bg-yellow-50 w-full max-w-sm shadow-xl">
+      <figure class="w-full object-cover rounded-t-lg">
+        <%= image_tag board.board_image.url if board.board_image.present? %>
+      </figure>
+      <div class="card-body">
+        <h2 class="text-lg font-bold">Dear, <%= board.title %></h2>
+        <p class="text-sm text-gray-500 truncate"><%= board.body %></p>
+        <p class="text-sm text-gray-500"><%= render board.tags %></p>
+      </div>
+      <div class="card-actions justify-end p-4">
+        <button class="btn btn-secondary text-gray-900">
+          <%= link_to "話しかける", board_path(board) %>
+        </button>
+      </div>
+    </div>
+  </label>
 </div>
