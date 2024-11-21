@@ -1,17 +1,19 @@
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 mt-3">
   <!-- ... -->
   <!-- 検索フォーム -->
     <%= render 'shared/search_board_form', search_form: @search_form %>
     <div id="tag-area" class="col-md-3">
-      <h2 class="h4">人気のあるタグ</h2>
-      <%= render Tag.popular %>
+      <h2 class="text-lg font-bold mt-3">人気のあるタグ</h2>
+      <div class="mb-4">
+        <%= render Tag.popular %>
+      </div>
     </div>
     <!-- 掲示板一覧 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-cols-max">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-cols-max flex flex-col min-w-0">
       <% if @boards.present? %>
         <%= render @boards %>
       <% else %>
-        <div class="mb-3">掲示板がありません</div>
+        <div class="text-sm mb-3">掲示板がありません</div>
       <% end %>
     </div>
 </div>
