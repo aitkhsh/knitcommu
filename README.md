@@ -208,3 +208,7 @@ tf-idf-similarity: TF-IDF（Term Frequency-Inverse Document Frequency）を計�
 matrix: 行列演算のためのライブラリです。
 stopwords-filter: 一般的な単語（ストップワード）を除去します。
 httparty: HTTP リクエストを簡単に行うためのgemです（OpenAI APIの使用例）。
+
+# ER 図
+[amucommu - ER 図](https://dbdiagram.io/d/amuamucommu-66fbcc04fb079c7ebdf2a87d)
+[![Image from Gyazo](https://i.gyazo.com/5129df85791a3511b5c64c480ab335c7.png)](https://gyazo.com/5129df85791a3511b5c64c480ab335c7)
