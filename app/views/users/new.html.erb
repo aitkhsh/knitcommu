@@ -8,40 +8,39 @@
       <%= form_with model: @user do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div>
-          <%= f.label :last_name, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
+          <%= f.label :name, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
           <div class="mt-2">
-            <%= f.text_field :last_name, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
+          <%= f.text_field :name, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+        </div>
 
-          <div>
-          <%= f.label :first_name, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="mt-2">
-            <%= f.text_field :first_name, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-          
-          <div>
+        <div>
           <%= f.label :email, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
           <div class="mt-2">
             <%= f.email_field :email, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
+        </div>
           
-          <div>
+        <div>
           <%= f.label :password, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
           <div class="mt-2">
             <%= f.password_field :password, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
+        </div>
 
-          <div>
+        <div>
           <%= f.label :password_confirmation, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
           <div class="mt-2">
             <%= f.password_field :password_confirmation, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-
-          <%= f.submit class: "btn btn-secondary" %>
-        <% end %>
-        <div class='text-center'>
-          <%= link_to t('.to_login_page'), login_path %>
         </div>
+
+        <%= f.submit class: "btn btn-secondary" %>
+      <% end %>
+      <%= link_to auth_at_provider_path(provider: :github), class: "btn btn-light" do %>
+        <i class="fab fa-github mr-2"></i>
+          <span class="has-text-weight-medium">GitHubアカウントで登録</span>
+        <% end %>
+      </div>
+
+      <div class='text-center'>
+        <%= link_to t('.to_login_page'), login_path %>
       </div>
     </div>
   </div>
