@@ -22,7 +22,7 @@ ja:
     new:
       title: ログイン
       login: ログイン
-      to_register_page: 登録ページへ
+      to_register_page: 新規登録
       password_forget: パスワードをお忘れの方はこちら
     create:
       success: ログインしました

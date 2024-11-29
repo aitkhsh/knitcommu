@@ -7,33 +7,30 @@
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-80 lg:max-w-3xl">
       <%= form_with url: login_path do |f| %>
           
-        <%= f.label :email, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
-        <div class="mt-2">
+        <%= f.label :email, class: "form-label block text-sm font-medium leading-6 text-gray-900 mt-4" %>
+        <div class="mt-1">
           <%= f.email_field :email, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
         </div>
           
-        <%= f.label :password, class: "form-label block text-sm font-medium leading-6 text-gray-900" %>
-        <div class="mt-2">
+        <%= f.label :password, class: "form-label block text-sm font-medium leading-6 text-gray-900 mt-4" %>
+        <div class="mt-1">
           <%= f.password_field :password, class: "form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
         </div>
         <div class="text-center text-sm my-3">
-        <%= f.submit t('.login'), class: "btn btn-secondary btn-sm" %>
+        <%= f.submit t('.login'), class: "btn btn-secondary" %>
       <% end %>
-        <div class="text-right text-sm my-3">
-          <%= link_to t('.password_forget'), '#' %>
-        </div>
-        <div class="text-center text-sm my-3">
+        <div class="text-center text-xs my-6">
           <p>または</p>
         </div>
 
         <div class="text-sm my-3">
-          <%= link_to auth_at_provider_path(provider: :github), class: "btn btn-secondary btn-sm" do %>
+          <%= link_to auth_at_provider_path(provider: :github), class: "btn btn-secondary" do %>
             <i class="fab fa-github mr-2"></i>
             <span>GitHubアカウントでログイン</span>
           <% end %>
         </div>
-        <div class="text-sm my-3">
-          <%= link_to t('.to_register_page'), new_user_path %>
+        <div class="text-xs my-3 text-gray-600">
+          <%= link_to t('.to_register_page'), new_user_path %>｜<%= link_to t('.password_forget'), '#' %>
         </div>
       </div>
     </div>
