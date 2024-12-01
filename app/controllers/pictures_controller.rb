@@ -118,10 +118,16 @@ class PicturesController < ApplicationController
     end
     
     # 報酬バッジをユーザーに付与
-    batch_count = current_user.boards.count / 3
+    total_batch_count = current_user.boards.count / 3
 
-    if batch_count >= 1
-      batch_count.times do
+    # 既に付与済みのバッジ数を取得
+    existing_batch_count = current_user.user_items.count
+
+    # 新たに付与すべきバッジ数を計算
+    new_batch_count = total_batch_count - existing_batch_count
+
+    if new_batch_count >= 1
+      new_batch_count.times do
         # ランダムにアイテムを選択
         item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
         UserItem.create!(user_id: current_user.id, item_id: item_id)
