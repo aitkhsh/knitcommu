@@ -36,20 +36,24 @@ ja:
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
+    show:
+      title: マイページ
   header:
     login: ログイン
     logout: ログアウト
     mypage: マイページ
-    board_index: ありがとう一覧
+    board_index: 感謝状一覧
     create_board: 感謝状作成
     show_item: アイテム一覧
   boards:
-    new: 
+    new:
       title: 感謝状作成
-    show: 
+    show:
       title: 感謝状詳細
-    index: 
+    index:
       title: 感謝状一覧
-    edit: 
+    edit:
       title: 感謝状編集
-    
+  pictures:
+    index:
+      title: 画像生成ページ
