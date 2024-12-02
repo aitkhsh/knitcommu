@@ -1,6 +1,6 @@
 <div id="board-id-<%= board.id %>">
   <!-- swapをラベルとして使う -->
-  <label class="swap swap-flip text-lg w-8 max-w-xs">
+  <label class="swap swap-flip text-lg w-full h-full max-w-xs">
     <!-- チェックボックスが状態を制御 -->
     <input type="checkbox" class="hidden" />
 
@@ -30,7 +30,7 @@
     <!-- 表面 (swap-off) -->
     <div class="swap-off card bg-yellow-50 w-full h-full max-w-xs shadow-xl overflow-hidden flex flex-col">
       <figure class="w-full rounded-t-lg object-contain">
-        <%= image_tag board.board_image.url , class: "rounded-xl w-72 h-72 object-cover" if board.board_image.present? %>
+        <%= image_tag board.board_image.url , class: "rounded-xl object-cover" if board.board_image.present? %>
       </figure>
       <div class="card-body flex flex-col justify-between">
         <h2 class="card-title">Dear, <%= board.title %></h2>
