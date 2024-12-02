@@ -1,0 +1,14 @@
+<%# Link showing page number
+  - available local variables
+    page:          a page object for "this" page
+    url:           url to this page
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+-%>
+<%# btn クラスは DaisyUI のデフォルト設定で上書きされている可能性があるため、 DaisyUI 固有クラスを利用 -%>
+<%= link_to_unless page.current?, page, url, class: "join-item btn btn-xs #{page.current? ? 'btn-secondary' : 'btn-primary'}", data: { turbo: false }, rel: page.rel do %>
+  <span class="join-item btn btn-xs btn-secondary"><%= page %></span>
+<% end %>
+

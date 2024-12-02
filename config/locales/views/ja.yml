@@ -57,3 +57,9 @@ ja:
   pictures:
     index:
       title: 画像生成ページ
+  # ページネーション
+  views:
+    pagination:
+      previous: "«"
+      next: "»"
+
