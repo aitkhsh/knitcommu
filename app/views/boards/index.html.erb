@@ -10,7 +10,7 @@
       </div>
     </div>
     <!-- 掲示板一覧 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-cols-max flex flex-col min-w-0">
+    <div class="flex flex-wrap justify-center gap-6">
       <% if @boards.present? %>
         <%= render @boards %>
       <% else %>
