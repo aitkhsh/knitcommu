@@ -7,9 +7,9 @@ class BoardsController < ApplicationController
 
   def index
     @boards = if (tag_name = params[:tag_names])
-      Board.with_tag(tag_name)
+      Board.with_tag(tag_name).page(params[:page])
     else
-      Board.includes(:user)
+      Board.includes(:user).page(params[:page])
     end
     # @boards = Board.includes(:user)
   end
