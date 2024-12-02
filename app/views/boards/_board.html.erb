@@ -1,13 +1,11 @@
-
-
 <div id="board-id-<%= board.id %>">
   <!-- swapをラベルとして使う -->
-  <label class="swap swap-flip text-lg w-full  max-w-xs">
+  <label class="swap swap-flip text-lg w-8 max-w-xs">
     <!-- チェックボックスが状態を制御 -->
     <input type="checkbox" class="hidden" />
 
     <!-- 裏面 (swap-on) -->
-    <div class="swap-on card bg-yellow-50 w-full">
+    <div class="swap-on card bg-yellow-50 w-full h-full max-w-xs shadow-xl flex flex-col">
       <div class="card-body overflow-y-auto">
         <h2 class="text-lg font-bold text-base sm:text-lg md:text-xl lg:text-2xl border-pink-200 border-b-2"><%= board.user.name %> さんの獲得アイテム</h2>
         <% if board.user.user_items.any? %>
@@ -30,14 +28,14 @@
 
 
     <!-- 表面 (swap-off) -->
-    <div class="swap-off card bg-yellow-50 w-full max-w-sm shadow-xl">
-      <figure class="w-full object-cover rounded-t-lg">
-        <%= image_tag board.board_image.url if board.board_image.present? %>
+    <div class="swap-off card bg-yellow-50 w-full h-full max-w-xs shadow-xl overflow-hidden flex flex-col">
+      <figure class="w-full rounded-t-lg object-contain">
+        <%= image_tag board.board_image.url , class: "rounded-xl w-72 h-72 object-cover" if board.board_image.present? %>
       </figure>
-      <div class="card-body">
-        <h2 class="text-lg font-bold">Dear, <%= board.title %></h2>
+      <div class="card-body flex flex-col justify-between">
+        <h2 class="card-title">Dear, <%= board.title %></h2>
         <p class="text-sm text-gray-500 truncate"><%= board.body %></p>
-        <p class="text-sm text-gray-500"><%= render board.tags %></p>
+        <p class="text-sm text-gray-500 truncate"><%= render board.tags %></p>
       </div>
       <div class="card-actions justify-end p-4">
         <button class="btn btn-secondary text-gray-900">
