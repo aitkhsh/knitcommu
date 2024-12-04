@@ -41,7 +41,7 @@ ja:
   header:
     login: ログイン
     logout: ログアウト
-    mypage: マイページ
+    itempage: アイテム一覧
     board_index: 感謝状一覧
     create_board: 感謝状作成
     show_item: アイテム一覧
@@ -57,6 +57,9 @@ ja:
   pictures:
     index:
       title: 画像生成ページ
+  items:
+    index:
+        title: アイテム一覧ページ
   # ページネーション
   views:
     pagination:
