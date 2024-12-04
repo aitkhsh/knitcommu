@@ -260,12 +260,12 @@ class BoardsController < ApplicationController
     set_meta_tags   twitter: {
                     title: "感謝状が届きました💖",
                     card: "summary_large_image",
-                    url: "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}",
+                    url: "https://amucommu.com/boards/#{@board.id}?time=#{current_time}",
                     image:  "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{object_key}"
                   }
 
     # Twitterシェア用のURL生成
-    app_url = "https://amucommu.onrender.com/boards/#{@board.id}?time=#{current_time}"
+    app_url = "https://amucommu.com/boards/#{@board.id}?time=#{current_time}"
     default_text = "#感謝状が届きました💖"
 
     x_url = "https://x.com/intent/tweet?url=#{CGI.escape(app_url)}&text=#{CGI.escape(default_text)}"
