@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   get "board_sessions/save", to: "board_sessions#save"
   get "board_sessions/clear", to: "board_sessions#clear"
+  resources :items, only: %i[index]
   #get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
