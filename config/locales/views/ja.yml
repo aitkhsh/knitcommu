@@ -2,6 +2,7 @@ ja:
   defaults:
     create: 作成
     post: 投稿
+    edit: 編集
     delete_confirm: 削除しますか？
     flash_message:
       created: "%{item}を作成しました"
@@ -45,6 +46,14 @@ ja:
     board_index: 感謝状一覧
     create_board: 感謝状作成
     show_item: アイテム一覧
+    profile: プロフィール
+  profiles:
+    show:
+      title: プロフィール
+      submit: 編集
+    edit:
+      title: プロフィール編集
+      submit: 編集
   boards:
     new:
       title: 感謝状作成
