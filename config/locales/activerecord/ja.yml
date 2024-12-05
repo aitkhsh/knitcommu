@@ -8,6 +8,7 @@ ja:
       user:
         email: メールアドレス
         name: 名前
+        avatar: アバター
         password: パスワード
         password_confirmation: パスワード確認
       board:
