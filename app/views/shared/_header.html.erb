@@ -1,11 +1,14 @@
 <header>
   <div class="navbar bg-base-100" style="background-color: rgba(254, 249, 195, 0.3);">
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl gray-900">あむ編むコミュ！</a>
+      <a><%= link_to "あむ編むコミュ！", root_path, class: "btn btn-ghost text-xl gray-900" %></a>
     </div>
-    <div class="flex-none gap-2">
+    <div class="flex-none">
       <div>
-        <a><%= link_to t('header.board_index'), boards_path %></a>
+        <a><%= link_to t('header.board_index'), boards_path, class: "btn btn-ghost text-xs"%></a>
+      </div>
+      <div>
+        <a><%= link_to t('header.create_board'), new_board_path, class: "btn btn-ghost text-xs"%></a>
       </div>
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -16,11 +19,6 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2">
-          <li>
-            <a>
-              <%= link_to t('header.create_board'), new_board_path, class: 'dropdown-item' %>
-            </a>
-          </li>
           <li>
             <a>
               <%= link_to t('header.itempage'), items_path, class: 'dropdown-item' %>
