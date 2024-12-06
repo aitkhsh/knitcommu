@@ -93,11 +93,11 @@ class BoardsController < ApplicationController
     # 各投稿の内容に基づいたメタタグ設定
     # メタタグ設定
     set_meta_tags(
-      title: "感謝状が届きました💖",
+      title: "届け感謝状💖",
       description: @board.body,
       image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
       og: {
-        title: "感謝状が届きました💖",
+        title: "届け感謝状💖",
         type: "website",
         image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
         url: request.original_url,
@@ -107,7 +107,7 @@ class BoardsController < ApplicationController
         card: "summary_large_image",
         site: "@aiaipanick",
         image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
-        title: "感謝状が届きました💖",
+        title: "届け感謝状💖",
         description: @board.body,
       }
     )
@@ -173,64 +173,6 @@ class BoardsController < ApplicationController
       c.compose "Over" # 背景画像を最前面に配置
     end
 
-    # # 2. 円形に切り抜く（マスク不要）
-    # MiniMagick::Tool::Convert.new do |img|
-    #   img << overlay_image.path                  # 入力画像
-    #   img.alpha "set"                            # アルファチャンネルを有効化
-    #   img.background "none"                      # 背景を透明化
-    #   img.fill "none"                            # 塗りつぶしを無効化
-    #   img.stroke "black"                         # 外部境界線を設定
-    #   img.stroke_width "0"                       # ストロークの幅を設定
-    #   img.draw "circle 250,250 250,0"            # 中央基準で円形に描画
-    #   img.write overlay_image.path               # 上書き保存
-    # end
-
-
-
-    # # 4. 背景画像に楕円形画像を合成
-    # x_position = (background_width - result_image.width) / 2
-    # y_position = (background_height - result_image.height) / 2
-
-    # canvas = canvas.composite(result_image) do |c|
-    #   c.compose "Over"                          # 上書き合成
-    #   c.geometry "+#{x_position}+#{y_position}" # 背景の中央に配置
-    # end
-
-    # canvas.write(Rails.root.join('tmp', 'debug_final_image.png'))
-
-    # # 2. 楕円形に加工（透明背景を維持）
-    # overlay_image.combine_options do |c|
-    #   c.alpha 'set'                             # アルファチャンネルを有効化
-    #   c.background 'none'                       # 背景を透明に設定
-    #   c.gravity 'center'                        # 中央基準で操作
-    #   c.crop '500x500+0+0'                      # 中心を基準に正方形をトリミング
-    #   # c.draw 'ellipse 250,250 250,200 0,360'    # 楕円形に切り抜き
-    # end
-
-
-    # # 3. 背景画像に楕円形画像を合成
-    # x_position = (background_width - overlay_image.width) / 2
-    # y_position = (background_height - overlay_image.height) / 2
-
-    # canvas = canvas.composite(overlay_image) do |c|
-    #   c.compose 'Over'                          # 上書き合成
-    #   c.geometry "+#{x_position}+#{y_position}" # 背景の中央に配置
-    # end
-
-
-
-    # # ボード画像を必要に応じてリサイズ
-    # overlay_image.resize "500x500" # 例として500x500にリサイズ
-
-    # 中央配置するための座標を計算
-    # x_position = (background_width - overlay_image.width) / 2
-    # y_position = (background_height - overlay_image.height) / 2
-
-    # # 背景画像の中央にボード画像を合成
-    # canvas = canvas.composite(overlay_imagecanvas) do |c|
-    #   c.geometry "+#{x_position}+#{y_position}" # 中央に配置
-    # end
-
     # メモリ上に画像を書き込む
     output = StringIO.new
     canvas.write(output)
@@ -258,7 +200,7 @@ class BoardsController < ApplicationController
     share_image_url = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{object_key}"
 
     set_meta_tags   twitter: {
-                    title: "感謝状が届きました💖",
+                    title: "届け感謝状💖",
                     card: "summary_large_image",
                     url: "https://amucommu.com/boards/#{@board.id}?time=#{current_time}",
                     image:  "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{object_key}"
