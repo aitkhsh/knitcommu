@@ -22,12 +22,12 @@ class ApplicationController < ActionController::Base
         description: :description,
         type: "website",
         url: :current_url,
-        image: "https://amucommu.com/ogp_image.png"
+        image: './app/assets/images/ogp_image.png'
       },
       twitter: {
         card: "summary_large_image",
         site: "@aiaipanick", # 任意でTwitterアカウントを指定
-        image: "https://amucommu.com/ogp_image.png"
+        image: './app/assets/images/ogp_image.png'
       }
     }
 
