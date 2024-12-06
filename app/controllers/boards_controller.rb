@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: %i[edit update destroy]
   before_action :set_search_boards_form, only: %i[index search]
   skip_before_action :require_login, only: %i[index show]
-  # skip_before_action :prepare_meta_tags, only: :share
+  skip_before_action :prepare_meta_tags, only: :share
 
   def index
     @boards = if (tag_name = params[:tag_names])
@@ -208,7 +208,7 @@ class BoardsController < ApplicationController
 
     # Twitterシェア用のURL生成
     app_url = "https://amucommu.com/boards/#{@board.id}?time=#{current_time}"
-    default_text = "#感謝状が届きました💖"
+    default_text = "#届け感謝状💖"
 
     x_url = "https://x.com/intent/tweet?url=#{CGI.escape(app_url)}&text=#{CGI.escape(default_text)}"
     redirect_to x_url, allow_other_host: true
