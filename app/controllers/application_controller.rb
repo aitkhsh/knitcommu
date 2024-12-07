@@ -22,12 +22,14 @@ class ApplicationController < ActionController::Base
         description: :description,
         type: "website",
         url: :current_url,
-        image: './app/assets/images/ogp_image.png'
+        # アセットパイプラインを利用してURLを生成する必要があり、asset_url または asset_path を使用して絶対URLを作成。
+        image: ActionController::Base.helpers.asset_url("ogp_image.png")
+
       },
       twitter: {
         card: "summary_large_image",
         site: "@aiaipanick", # 任意でTwitterアカウントを指定
-        image: './app/assets/images/ogp_image.png'
+        image: ActionController::Base.helpers.asset_url("ogp_image.png")
       }
     }
 
