@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
   before_action :set_search_boards_form, only: %i[index search]
   skip_before_action :require_login, only: %i[index show]
   skip_before_action :prepare_meta_tags, only: :share
+  before_action :check_board_limit, only: %i[new create]
 
   def index
     @boards = if (tag_name = params[:tag_names])
@@ -254,6 +255,13 @@ class BoardsController < ApplicationController
 
   def search_board_params
     params.fetch(:q, {}).permit(:title_or_body, :username, :tag)
+  end
+
+  def check_board_limit
+    max_boards_per_month = 2
+    if Board.this_month_boards_count(current_user) >= max_boards_per_month
+      redirect_to boards_path, alert: "1ヶ月に投稿できる数は最大#{max_boards_per_month}件までです。"
+    end
   end
 end
 

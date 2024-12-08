@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   MAX_IMAGES = 2 # 最大生成枚数を定数として定義
+  before_action :check_board_limit, only: %i[index create]
 
   def create
     # 最初の画像生成リクエストの場合のみセッションをクリア
@@ -116,7 +117,7 @@ class PicturesController < ApplicationController
         image: image
         )
     end
-    
+
     # 報酬バッジをユーザーに付与
     total_batch_count = current_user.boards.count / 3
 
@@ -132,6 +133,13 @@ class PicturesController < ApplicationController
         item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
         UserItem.create!(user_id: current_user.id, item_id: item_id)
       end
+    end
+  end
+
+  def check_board_limit
+    max_boards_per_month = 2
+    if Board.this_month_boards_count(current_user) > max_boards_per_month
+      redirect_to boards_path, alert: "1ヶ月に投稿できる数は最大#{max_boards_per_month}件までです。"
     end
   end
 end
