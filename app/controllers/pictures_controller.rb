@@ -82,7 +82,7 @@ class PicturesController < ApplicationController
         user: current_user # 投稿者を設定
       )
 
-      if board.save_with_tags(tag_names: params[:tag_names].split(',').map(&:strip))
+      if board.save_with_tags(tag_names: params[:tag_names].split('、').map(&:strip))
         # 一時ファイルを削除
         image_file.close
         image_file.unlink

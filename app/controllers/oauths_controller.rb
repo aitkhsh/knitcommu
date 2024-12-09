@@ -26,7 +26,7 @@ class OauthsController < ApplicationController
     end
 
     if @user = login_from(provider)
-      redirect_to root_path, success: "#{provider.titleize}アカウントでログインしました。"
+      redirect_to root_path, notice: "#{provider.titleize}アカウントでログインしました。"
       puts "---------------"
       puts "3 ok"
       puts "---------------"

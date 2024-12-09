@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to boards_path, success: t("users.create.success")
+      redirect_to boards_path, notice: t("users.create.success")
     else
       flash.now[:alert] = t("users.create.failure")
       render :new, status: :unprocessable_entity

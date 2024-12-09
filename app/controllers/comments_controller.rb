@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to comment_path(@comment.id), success: t('defaults.flash_message.created', item: Comment.model_name.human)
+      redirect_to comment_path(@comment.id), notice: t('defaults.flash_message.created', item: Comment.model_name.human)
     else
       redirect_to board_path(comment.board), alert: t('defaults.flash_message.not_created', item: Comment.model_name.human)
     end
