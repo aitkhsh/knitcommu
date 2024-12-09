@@ -8,7 +8,9 @@
     remote:        data-remote
 -%>
 <%# btn クラスは DaisyUI のデフォルト設定で上書きされている可能性があるため、 DaisyUI 固有クラスを利用 -%>
-<%= link_to_unless page.current?, page, url, class: "join-item btn btn-xs #{page.current? ? 'btn-secondary' : 'btn-primary'}", data: { turbo: false }, rel: page.rel do %>
-  <span class="join-item btn btn-xs btn-secondary"><%= page %></span>
+<% if page.current? %>
+<%= link_to page, url, class: "join-item btn btn-active btn-xs", remote: true, rel: page.rel %>
+<% else %>
+<%= link_to page, url, class: "join-item btn btn-xs", remote: true, rel: page.rel %>
 <% end %>
 

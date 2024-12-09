@@ -11,21 +11,4 @@ module.exports = {
     themes: ["pastel"],
     darkTheme: false,
   },
-  // theme: {
-  //   extend: {
-  //     animation: {
-  //       "flip-horizontal": "flip-horizontal 0.7s ease-in-out both",
-  //     },
-  //     keyframes: {
-  //       "flip-horizontal": {
-  //         "0%": {
-  //           transform: "rotateY(0)",
-  //         },
-  //         "100%": {
-  //           transform: "rotateY(180deg)",
-  //         },
-  //       },
-  //     },
-  //   },
-  // },
 };
