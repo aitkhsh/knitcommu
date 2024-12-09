@@ -1,5 +1,5 @@
 <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>">
+  <div class="<%= flash_background_color(message_type) %> w-full px-4 py-4 rounded-md text-white mb-6">
     <%= message %>
   </div>
 <% end %>

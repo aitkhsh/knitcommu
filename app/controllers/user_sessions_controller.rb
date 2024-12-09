@@ -7,9 +7,9 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to boards_path, success: t("user_sessions.create.success")
+      redirect_to boards_path, notice: t("user_sessions.create.success")
     else
-      flash.now[:danger] = t("user_sessions.create.failure")
+      flash.now[:alert] = t("user_sessions.create.failure")
       render :new, status: :unprocessable_entity
     end
   end

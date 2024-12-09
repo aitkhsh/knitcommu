@@ -224,7 +224,7 @@ class BoardsController < ApplicationController
     if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split(',').uniq)
       redirect_to board_path(@board), success: t('defaults.flash_message.updated', item: Board.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
+      flash.now[:alert] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
