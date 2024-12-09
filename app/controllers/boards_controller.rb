@@ -221,8 +221,8 @@ class BoardsController < ApplicationController
 
   def update
     @board.assign_attributes(board_params)
-    if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split(',').uniq)
-      redirect_to board_path(@board), success: t('defaults.flash_message.updated', item: Board.model_name.human)
+    if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split('、').uniq)
+      redirect_to board_path(@board), notice: t('defaults.flash_message.updated', item: Board.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
       render :edit, status: :unprocessable_entity
@@ -232,7 +232,7 @@ class BoardsController < ApplicationController
   def destroy
     board = current_user.boards.find(params[:id])
     board.destroy!
-    redirect_to boards_path, success: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
+    redirect_to boards_path, notice: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
   end
 
   def search
