@@ -89,10 +89,10 @@ class PicturesController < ApplicationController
         # 投稿数を計算
         check_for_reward(current_user)
 
-        flash[:notice] = "Boardが作成されました！"
+        flash[:notice] = "感謝状が作成されました！"
         redirect_to board_path(board)
       else
-        flash[:alert] = "Boardの保存に失敗しました。再度お試しください。"
+        flash[:alert] = "感謝状の保存に失敗しました。再度お試しください。"
         redirect_to pictures_path
       end
     else
