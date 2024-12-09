@@ -2,13 +2,16 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
   before_action :require_login
-  add_flash_types :success, :danger
+  # add_flash_types :success, :danger
   before_action :prepare_meta_tags, if: -> { request.get? }
 
   private
 
+  # def not_authenticated
+  #   redirect_to login_path, danger: t("defaults.flash_message.require_login")
+  # end
   def not_authenticated
-    redirect_to login_path, danger: t("defaults.flash_message.require_login")
+    redirect_to login_path, alert: t("defaults.flash_message.require_login")
   end
 
   def prepare_meta_tags(options = {})
