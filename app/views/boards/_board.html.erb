@@ -7,10 +7,19 @@
     <!-- 裏面 (swap-on) -->
     <div class="swap-on card bg-yellow-50 w-full h-full max-w-xs shadow-xl flex flex-col">
       <div class="card-body overflow-y-auto">
-        <h2 class="text-lg font-bold text-base sm:text-lg md:text-xl lg:text-2xl border-pink-200 border-b-2"><%= board.user.name %> さんの獲得アイテム</h2>
+        <button class="btn btn-ghost"><%= link_to items_path(user_id: board.user.id), class: "block" do %>
+          <div class="flex">
+            <div class="w-10 rounded-full">
+              <%= image_tag board.user.avatar_url, class: "w-10 rounded-full" %>
+            </div>
+            <h2 class="text-lg font-bold text-base sm:text-lg md:text-xl lg:text-2xl border-pink-200 border-b-2 mb-4">
+              <%= board.user.name %> さんのアイテム
+            </h2>
+          </div>
+        <% end %></button>
         <% if board.user.user_items.any? %>
           <!-- グリッド: アイテムがある場合 -->
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center mt-2">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center mt-4">
             <% board.user.items.each do |item| %>
               <div class="rounded-lg shadow-xl">
                 <%= image_tag item.image, class: 'badge-image rounded-lg shadow', size: '150x150' %>
@@ -28,7 +37,7 @@
 
 
     <!-- 表面 (swap-off) -->
-    <div class="swap-off card bg-yellow-50 w-full h-full max-w-xs shadow-xl overflow-hidden flex flex-col">
+    <div class="swap-off card bg-yellow-50 w-full h-full max-w-xs shadow-xl overflow-hidden flex flex-col hover:shadow-yellow-200">
       <figure class="w-full rounded-t-lg object-contain">
         <%= image_tag board.board_image.url , class: "rounded-xl object-cover" if board.board_image.present? %>
       </figure>

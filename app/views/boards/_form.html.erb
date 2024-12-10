@@ -1,5 +1,8 @@
 <div class="flex justify-center min-h-screen bg-yellow-50">
   <div class="w-full max-w-lg rounded-lg">
+    <div class="text-gray-500 bg-red-100/50 text-sm mt-6 p-8 rounded-full">
+      <p> 相手の方がもらって嬉しい画像を心を込めて生成しましょう。</p>
+    </div>
       <%= form_with model: @board, class: "new_board" do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div>
@@ -26,9 +29,6 @@
 
         <%= f.submit nil, class: "btn btn-secondary" %>
       <% end %>
-      <div class="text-gray-500 bg-red-100/50 text-sm mt-6 p-8 rounded-full">
-          <p> 相手の方がもらって嬉しい画像を心を込めて生成しましょう。</p>
-        </div>
     </div>
   </div>
 </div>
