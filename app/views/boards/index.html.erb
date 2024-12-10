@@ -2,20 +2,20 @@
 <div class="container mx-auto min-h-screen h-screen px-4 mt-3">
   <!-- ... -->
   <!-- 検索フォーム -->
-    <%= render 'shared/search_board_form', search_form: @search_form %>
-    <div id="tag-area" class="col-md-3">
-      <h2 class="text-lg font-bold mt-3">人気のあるタグ</h2>
-      <div class="mb-4">
-        <%= render Tag.popular %>
-      </div>
+  <%= render 'shared/search_board_form', search_form: @search_form %>
+  <div id="tag-area" class="col-md-3">
+    <h2 class="text-lg font-bold mt-3">人気のあるキーワード</h2>
+    <div class="mb-4">
+      <%= render Tag.popular %>
     </div>
-    <!-- 掲示板一覧 -->
-    <div class="flex flex-wrap justify-center gap-6">
-      <% if @boards.present? %>
-        <%= render @boards %>
-      <% else %>
-        <div class="text-sm mb-3">掲示板がありません</div>
-      <% end %>
-    </div>
-    <%= paginate @boards %>
+  </div>
+  <!-- 掲示板一覧 -->
+  <div class="flex flex-wrap justify-center gap-6">
+    <% if @boards.present? %>
+      <%= render @boards %>
+    <% else %>
+      <div class="text-sm mb-3">掲示板がありません</div>
+    <% end %>
+  </div>
+  <%= paginate @boards %>
 </div>

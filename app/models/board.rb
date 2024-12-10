@@ -9,9 +9,9 @@ class Board < ApplicationRecord
   has_many :tags, through: :boardtags
 
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
-  scope :name_contain, ->(word) { where('name LIKE ?', "%#{word}%") }
+  scope :title_contain, ->(word) { where('boards.title LIKE ?', "%#{word}%") }
   scope :body_contain, ->(word) { where('boards.body LIKE ?', "%#{word}%") }
-  scope :username_contain, ->(word) { joins(user: :board).where('boards.name LIKE ?', "%#{word}%") }
+  scope :name_contain, ->(word) { joins(:user).where('users.name LIKE ?', "%#{word}%") }
   scope :tag_contain, ->(word) { joins(:tags).where('tags.name LIKE ?', "%#{word}%")}
   scope :this_month, -> { where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
 
@@ -27,7 +27,7 @@ class Board < ApplicationRecord
 
   def tag_names
     # NOTE: pluckだと新規作成失敗時に値が残らない(返り値がnilになる)
-    tags.map(&:name).join(',')
+    tags.map(&:name).join('、')
   end
 
   # ユーザーの月投稿数をカウント

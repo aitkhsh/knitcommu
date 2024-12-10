@@ -7,10 +7,10 @@ class BoardsController < ApplicationController
   before_action :check_board_limit, only: %i[new create]
 
   def index
-    @boards = if (tag_name = params[:tag_names])
-      Board.with_tag(tag_name).page(params[:page])
+    @boards = if (tag_name = params[:tag_name])
+      Board.with_tag(tag_name).order(created_at: :desc).page(params[:page])
     else
-      Board.includes(:user).page(params[:page])
+      Board.includes(:user).order(created_at: :desc).page(params[:page])
     end
     # @boards = Board.includes(:user)
   end
@@ -254,7 +254,7 @@ class BoardsController < ApplicationController
   end
 
   def search_board_params
-    params.fetch(:q, {}).permit(:title_or_body, :username, :tag)
+    params.fetch(:q, {}).permit(:title_or_body, :name, :tag)
   end
 
   def check_board_limit
