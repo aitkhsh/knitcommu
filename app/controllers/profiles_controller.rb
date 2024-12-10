@@ -12,6 +12,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @user.destroy
+    reset_session
+    redirect_to root_path, status: :see_other, notice: t('defaults.flash_message.destroy')
+  end
+
   private
   def set_user
     @user = current_user

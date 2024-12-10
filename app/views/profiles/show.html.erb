@@ -13,6 +13,9 @@
       <div class="text-sm text-gray-500 mt-5 mb-2"><%= User.human_attribute_name(:avatar) %></div>
       <div><%= image_tag current_user.avatar_url, class: 'rounded-full', size: '80x80' %></div>
     </div>
-    <button class="btn btn-success rounded-full mt-5"><%= link_to t('defaults.edit'), edit_profile_path %></button>
+  </div>
+  <div class="flex justify-center">
+    <button class="btn btn-success rounded-full text-zinc-100 mx-5"><%= link_to t('defaults.edit'), edit_profile_path %></button>
+    <button class="btn btn-error rounded-full text-zinc-100"><%= link_to t('defaults.delete'), profile_path, data: { turbo_method: "delete", turbo_confirm: t('defaults.delete_user_confirm') } %></button>
   </div>
 </div>
