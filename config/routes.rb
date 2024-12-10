@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   resources :users, only: %i[new create show]
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update destroy]
   resources :pictures, only: %i[index create] do
     post :select_image, on: :collection # select_imageアクション用のルート
   end

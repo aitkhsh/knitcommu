@@ -3,7 +3,9 @@ ja:
     create: 作成
     post: 投稿
     edit: 編集
+    delete: 退会
     delete_confirm: 削除しますか？
+    delete_user_confirm: 本当に退会しますか？
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
@@ -11,6 +13,7 @@ ja:
       not_updated: "%{item}を更新出来ませんでした"
       deleted: "%{item}を削除しました"
       require_login: ログインしてください
+      destroy: "退会しました"
   helpers:
     submit:
       create: 登録
