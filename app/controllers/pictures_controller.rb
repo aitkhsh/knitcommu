@@ -132,6 +132,8 @@ class PicturesController < ApplicationController
         # ランダムにアイテムを選択
         item_id = Item.pluck(:id).sample # 登録されているアイテムのIDからランダムに取得
         UserItem.create!(user_id: current_user.id, item_id: item_id)
+        flash[:notice] = "アイテムを獲得しました！アイテム一覧を確認しましょう！"
+        redirect_to items_path
       end
     end
   end
