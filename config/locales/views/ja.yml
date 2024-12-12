@@ -6,6 +6,7 @@ ja:
     delete: 退会
     delete_confirm: 削除しますか？
     delete_user_confirm: 本当に退会しますか？
+    password_reset: パスワードリセット
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
@@ -57,6 +58,16 @@ ja:
     edit:
       title: プロフィール編集
       submit: 編集
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      success: パスワードリセット手順を送信しました
+    update:
+      success: パスワードを変更しました
   boards:
     new:
       title: 感謝状作成

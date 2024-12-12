@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root "static_pages#top"
 
   get "login", to: "user_sessions#new"
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get "board_sessions/save", to: "board_sessions#save"
   get "board_sessions/clear", to: "board_sessions#clear"
   resources :items, only: %i[index]
+  resources :password_resets, only: %i[new create edit update]
   #get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
