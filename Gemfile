@@ -45,7 +45,7 @@ gem "mini_magick"
 
 gem "fog-aws"
 
-gem "dotenv", groups: [ :development, :test ]
+gem "dotenv-rails"
 
 gem "meta-tags", require: "meta_tags"
 

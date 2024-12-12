@@ -134,6 +134,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
+      railties (>= 6.1)
     draper (4.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -450,7 +453,7 @@ DEPENDENCIES
   carrierwave (~> 3.0)
   cssbundling-rails
   debug
-  dotenv
+  dotenv-rails
   draper
   fog-aws
   httparty (~> 0.22.0)
