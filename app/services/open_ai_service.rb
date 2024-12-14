@@ -1,17 +1,17 @@
 class OpenAiService
   include HTTParty
 
-  base_uri 'https://api.openai.com/v1'
+  base_uri "https://api.openai.com/v1"
 
-  def self.generate_image(prompt, size="1024x1024", quality="standard", n=1)
+  def self.generate_image(prompt, size = "1024x1024", quality = "standard", n = 1)
     begin
-      response = post('/images/generations',
+      response = post("/images/generations",
                       headers: {
-                        'Authorization' => "Bearer #{ENV['OPENAI_API_KEY']}",
-                        'Content-Type' => 'application/json'
+                        "Authorization" => "Bearer #{ENV["OPENAI_API_KEY"]}",
+                        "Content-Type" => "application/json"
                       },
                       body: {
-                        model: 'dall-e-3',
+                        model: "dall-e-3",
                         prompt: "A stuffed animal made of woolen yarn wearing woolen clothes, reflecting the following as a specific motif. #{prompt}", # コントローラーから渡されたプロンプトを使用
                         # prompt: "A stuffed animal made of woolen yarn wearing woolen clothes, reflecting the following as a specific motif.", # コントローラーから渡されたプロンプトを使用
                         size: size,
@@ -33,7 +33,7 @@ class OpenAiService
       Rails.logger.info "Attempting to download image from URL: #{url}"
 
       # 一時ファイルの作成
-      tempfile = Tempfile.new(['openai_image', '.jpg'])
+      tempfile = Tempfile.new([ "openai_image", ".jpg" ])
       tempfile.binmode
 
       # URLから画像データを読み込み
@@ -54,7 +54,7 @@ class OpenAiService
       tempfile&.close!
       nil # 予期しないエラーが発生した場合もnilを返す
 
-    # ensureブロックを削除し、エラー時のみファイルを削除
+      # ensureブロックを削除し、エラー時のみファイルを削除
     end
   end
 end

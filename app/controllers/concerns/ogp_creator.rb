@@ -1,9 +1,9 @@
 class OgpCreator
-  require 'mini_magick'
-  BASE_IMAGE_PATH = './app/assets/images/ogp_image.png'
-  GRAVITY = 'center'
-  TEXT_POSITION = '0,10'
-  FONT = './app/assets/fonts/azuki.ttf'
+  require "mini_magick"
+  BASE_IMAGE_PATH = "./app/assets/images/ogp_image.png"
+  GRAVITY = "center"
+  TEXT_POSITION = "0,10"
+  FONT = "./app/assets/fonts/azuki.ttf"
   FONT_SIZE = 23
   INDENTION_COUNT = 20
   ROW_LIMIT = 8
@@ -13,7 +13,7 @@ class OgpCreator
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
     image.combine_options do |config|
       config.font FONT
-      config.fill '#333333'
+      config.fill "#333333"
       config.gravity GRAVITY
       config.pointsize FONT_SIZE
       config.draw "text #{TEXT_POSITION} '#{text}'"

@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
     @user.deliver_reset_password_instructions! if @user
-    redirect_to login_path, success: t('.success')
+    redirect_to login_path, success: t(".success")
   end
 
   def edit
@@ -24,9 +24,9 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     # the next line clears the temporary token and updates the password
     if @user.change_password(params[:user][:password])
-      redirect_to login_path, success: t('.success')
+      redirect_to login_path, success: t(".success")
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:alert] = t(".fail")
       render :edit, status: :unprocessable_entity
     end
   end
