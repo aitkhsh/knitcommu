@@ -21,7 +21,7 @@ class OauthsController < ApplicationController
     puts "---------------"
 
     if params[:error]
-      redirect_to root_path, alert: t('alerts.auth.cancelled', provider: provider.titleize)
+      redirect_to root_path, alert: t("alerts.auth.cancelled", provider: provider.titleize)
       return
     end
 

@@ -82,7 +82,7 @@ class PicturesController < ApplicationController
         user: current_user # 投稿者を設定
       )
 
-      if board.save_with_tags(tag_names: params[:tag_names].split('、').map(&:strip))
+      if board.save_with_tags(tag_names: params[:tag_names].split("、").map(&:strip))
         # 一時ファイルを削除
         image_file.close
         image_file.unlink
@@ -107,10 +107,9 @@ class PicturesController < ApplicationController
   end
 
   def check_for_reward(current_user)
-
     # リリース初期段階で Item モデルにバッジを登録
     # リリース数日後にコメントアウト予定
-    bedges = ['badge1.png', 'badge2.png', 'badge3.png', 'badge4.png', 'badge5.png', 'badge6.png', 'badge7.png', 'badge8.png', 'badge9.png', 'badge10.png', 'badge11.png', 'badge12.png', 'badge13.png']
+    bedges = [ "badge1.png", "badge2.png", "badge3.png", "badge4.png", "badge5.png", "badge6.png", "badge7.png", "badge8.png", "badge9.png", "badge10.png", "badge11.png", "badge12.png", "badge13.png" ]
 
     bedges.each do |image|
       Item.find_or_create_by!(

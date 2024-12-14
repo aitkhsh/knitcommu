@@ -5,9 +5,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, notice: t('defaults.flash_message.updated', item: User.model_name.human)
+      redirect_to profile_path, notice: t("defaults.flash_message.updated", item: User.model_name.human)
     else
-      flash.now[:alert] = t('defaults.flash_message.not_updated', item: User.model_name.human)
+      flash.now[:alert] = t("defaults.flash_message.not_updated", item: User.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     @user.destroy
     reset_session
-    redirect_to root_path, status: :see_other, notice: t('defaults.flash_message.destroy')
+    redirect_to root_path, status: :see_other, notice: t("defaults.flash_message.destroy")
   end
 
   private

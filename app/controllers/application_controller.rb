@@ -41,4 +41,3 @@ class ApplicationController < ActionController::Base
     set_meta_tags options
   end
 end
-

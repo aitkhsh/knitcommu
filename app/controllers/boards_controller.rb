@@ -76,12 +76,12 @@ class BoardsController < ApplicationController
     #     render :new, status: :unprocessable_entity
     #   end
     # else
-      # 必要な情報が揃っていない場合、保存用のセッションにリダイレクト
-      redirect_to board_sessions_save_path(
-        title: params[:board][:title],
-        body: params[:board][:body],
-        tag_names: params[:board][:tag_names]
-      )
+    # 必要な情報が揃っていない場合、保存用のセッションにリダイレクト
+    redirect_to board_sessions_save_path(
+      title: params[:board][:title],
+      body: params[:board][:body],
+      tag_names: params[:board][:tag_names]
+    )
     # end
   end
 
@@ -102,29 +102,29 @@ class BoardsController < ApplicationController
         type: "website",
         image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
         url: request.original_url,
-        site_name: "あむ編むコミュ！",
+        site_name: "あむ編むコミュ！"
       },
       twitter: {
         card: "summary_large_image",
         site: "@aiaipanick",
         image: "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['S3_REGION']}.amazonaws.com/#{@board.id}_#{current_time}.png",
         title: "届け感謝状💖",
-        description: @board.body,
+        description: @board.body
       }
     )
   end
 
   def share
-    require 'aws-sdk-s3'
+    require "aws-sdk-s3"
 
     @board = Board.find(params[:id])
     current_time = Time.now.strftime("%Y%m%d%H%M%S")
 
-    require 'open-uri'
-    require 'stringio'
+    require "open-uri"
+    require "stringio"
 
     # 背景画像のパスを指定
-    background_path = Rails.root.join('public', 'ogp_image.png')
+    background_path = Rails.root.join("public", "ogp_image.png")
     canvas = MiniMagick::Image.open(background_path)
 
     # 背景画像のサイズを取得
@@ -180,12 +180,12 @@ class BoardsController < ApplicationController
 
     # S3リソースを初期化
     s3_resource = Aws::S3::Resource.new(
-      region: ENV['S3_REGION'],
-      access_key_id: ENV['S3_ACCESS_KEY_ID'],
-      secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
+      region: ENV["S3_REGION"],
+      access_key_id: ENV["S3_ACCESS_KEY_ID"],
+      secret_access_key: ENV["S3_SECRET_ACCESS_KEY"]
     )
     # バケットとオブジェクトキーを設定
-    s3_bucket = s3_resource.bucket(ENV['S3_BUCKET_NAME'])
+    s3_bucket = s3_resource.bucket(ENV["S3_BUCKET_NAME"])
     object_key = "#{@board.id}_#{current_time}.png"
 
 
@@ -221,10 +221,10 @@ class BoardsController < ApplicationController
 
   def update
     @board.assign_attributes(board_params)
-    if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split('、').uniq)
-      redirect_to board_path(@board), notice: t('defaults.flash_message.updated', item: Board.model_name.human)
+    if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split("、").uniq)
+      redirect_to board_path(@board), notice: t("defaults.flash_message.updated", item: Board.model_name.human)
     else
-      flash.now[:alert] = t('defaults.flash_message.not_updated', item: Board.model_name.human)
+      flash.now[:alert] = t("defaults.flash_message.not_updated", item: Board.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -232,7 +232,7 @@ class BoardsController < ApplicationController
   def destroy
     board = current_user.boards.find(params[:id])
     board.destroy!
-    redirect_to boards_path, notice: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
+    redirect_to boards_path, notice: t("defaults.flash_message.deleted", item: Board.model_name.human), status: :see_other
   end
 
   def search
@@ -264,4 +264,3 @@ class BoardsController < ApplicationController
     end
   end
 end
-

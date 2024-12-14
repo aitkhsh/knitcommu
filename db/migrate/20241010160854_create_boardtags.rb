@@ -6,6 +6,6 @@ class CreateBoardtags < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    add_index :boardtags, [:tag_id, :board_id], unique: true
+    add_index :boardtags, [ :tag_id, :board_id ], unique: true
   end
 end
