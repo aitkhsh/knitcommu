@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       redirect_to boards_path, notice: t("users.create.success")
     else
       flash.now[:alert] = t("users.create.failure")
