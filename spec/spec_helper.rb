@@ -13,6 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -91,4 +92,11 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  SimpleCov.start do
+    add_filter "/test/" # testを含むファイルが計測対象から除外される
+    add_group "Models", "app/models" # add_group "グループ化名", "グループ化したいパス"
+    add_group "Controllers", "app/controllers"
+  end
 end

@@ -8,15 +8,15 @@ RSpec.describe Tag, type: :model do
       expect(tag.errors).to be_empty
     end
     it "nameがない場合にバリデーションが機能してinvalidになるか" do
-      tag_without_name = build(:tag, name:"")
+      tag_without_name = build(:tag, name: "")
       expect(tag_without_name).to be_invalid
-      expect(tag_without_name.errors[:name]).to eq ["を入力してください"]
+      expect(tag_without_name.errors[:name]).to eq [ "を入力してください" ]
     end
     it "同じnameが入力されたらバリデーションが機能してinvalidになるか" do
-      tag = create(:tag, name:"abcd")
-      new_tag = build(:tag, name:"abcd")
+      tag = create(:tag, name: "abcd")
+      new_tag = build(:tag, name: "abcd")
       expect(new_tag).to be_invalid
-      expect(new_tag.errors[:name]).to eq ["はすでに存在します"]
+      expect(new_tag.errors[:name]).to eq [ "はすでに存在します" ]
     end
   end
 end
