@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   # get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
+  get 'usage_instructions' => 'pages#usage_instructions'
+  get 'statistic_pages/policy' => 'static_pages#policy', as: :policy
+  get 'statistic_pages/terms' => 'static_pages#terms', as: :terms
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
