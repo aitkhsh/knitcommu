@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :pictures, only: %i[index create] do
     post :select_image, on: :collection # select_imageアクション用のルート
   end
-  resources :boards, only: %i[index new create show edit destroy] do
+  resources :boards, only: %i[index new create show edit update destroy] do
     resources :comments, only: %i[create show edit destroy], shallow: true
     collection do
       get :search
