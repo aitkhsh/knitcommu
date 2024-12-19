@@ -37,14 +37,15 @@
             <h3>生成された画像を選択してください:</h3>
           </div>
           <%= form_with url: select_image_pictures_path, method: :post, local: true do %>
-            <div class="flex flex-wrap gap-6 px-4">
+            <div class="flex flex-wrap gap-6 px-4 my-4">
               <% @images.each do |image_url| %>
                 <div class="flex items-center">
                   <%= image_tag image_url, width: 200, class: "rounded-lg shadow-xl mr-2" %>
-                  <%= radio_button_tag :image_url, image_url, false %>
+                  <%= radio_button_tag :image_url, image_url, false, class: "mr-4" %>
                 </div>
               <% end %>
             </div>
+
 
             <%# 隠しフィールドに title, body, tag_names を再送信 %>
             <%= hidden_field_tag :title, @title %>
