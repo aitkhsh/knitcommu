@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
-      board: ありがとう
+      board: 感謝状
       comment: コメント
     attributes:
       user:

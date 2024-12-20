@@ -2,15 +2,76 @@
   class="hero min-h-screen bg-fixed bg-cover bg-center"
   style="background-image: url(<%= image_path('top_image.png') %>);">
   <div class="hero-overlay" style="background-color: rgba(254, 249, 195, 0.3);"></div>
-  <div class="hero-content text-neutral-content text-center">
-    <div class="max-w-md">
-      <h1 class="mb-5 text-4xl font-bold">感謝を編もう</h1>
-      <p class="text-sm text-gray-800 mb-5">
-        同じコミュニティ内で「感謝の気持ち」を表現し、相手が喜ぶ画像をAIで生成してプレゼントするサービスです。<br>
-        ユーザーは、感謝メッセージを3回送信するごとに「ニット系アイテム」を獲得できます。アイテムはコレクションとして収集したり、他のユーザーに贈って感謝の循環を楽しむこともできます。
-      </p>
-      <div>
-        <button class="btn btn-secondary"><%= link_to t('header.board_index'), boards_path %></button>
+  <div class="hero-content text-neutral-content text-center mx-8">
+    <div class="flex flex-col justify-center items-center">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-4xl font-bold mt-40">感謝を編もう</h1>
+        <p class="text-sm text-gray-800 mb-5">
+          同じコミュニティ内で「感謝の気持ち」を表現し、相手が喜ぶ画像をAIで生成してプレゼントするサービスです。<br>
+          ユーザーは、感謝メッセージを3回送信するごとに「ニット系アイテム」を獲得できます。アイテムはコレクションとして収集できます。
+        </p>
+        <div>
+          <button class="btn btn-secondary"><%= link_to t('header.board_index'), boards_path %></button>
+        </div>
+      </div>
+      <div class="w-5/6 mx-auto max-w-sm md:max-w-5xl mb-20">
+        <div class="flex items-center justify-center mb-3">
+          <div class="text-2xl font-bold text-zinc-500 mt-40 mb-10">
+            <h3>使い方</h3>
+          </div>
+        </div>
+        <div class="carousel rounded-box w-full max-w-full">
+          <div class="carousel-item  pr-4 text-left">
+            <div class="card glass w-full max-w-xs mx-auto">
+              <div class="card-body justify-center items-center">
+                <h3 class="font-bold text-zinc-500 mb-3">感謝状一覧</h3>
+                <p class="text-xs text-zinc-500 mb-3">みんなのそれぞれの感謝と相手を思って作られたニットの画像が閲覧できます。</p>
+                <a href="https://gyazo.com/368f70d9a9c9aa7e37122c29563d953e"><video width="768" autoplay muted loop playsinline controls><source src="https://i.gyazo.com/368f70d9a9c9aa7e37122c29563d953e.mp4" type="video/mp4"/></video></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item pr-4 text-left  flex-shrink-0">
+            <div class="card glass w-full max-w-xs mx-auto flex-shrink-0">
+              <div class="card-body justify-center items-center">
+                <h3 class="font-bold text-zinc-500 mb-3">感謝状作成</h3>
+                <p class="text-xs text-zinc-500 mb-3">1ヶ月に2回、感謝のメッセージとニットの画像作成の感謝状作成ができます。<br>
+                感謝状作成でテキスト入力後に登録ボタンを押すと、次は画像生成ページにアクセスします。</p>
+                <a href="https://gyazo.com/e8287ad452d4158071c87352fa0a1d36"><img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="Image from Gyazo" width="774"/></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item pr-4 text-left flex-shrink-0">
+            <div class="card glass w-full max-w-xs mx-auto flex-shrink-0">
+              <div class="card-body justify-center items-center">
+                <h3 class="font-bold text-zinc-500 mb-3">画像生成</h3>
+                <p class="text-xs text-zinc-500 mb-3">キーワードをもとに画像を最大2枚生成できます。<br>
+                ラジオボタンで一つだけ選択し、感謝状作成ボタンをクリックすると、画像付きの感謝状が投稿できます。</p>
+                <a href="https://gyazo.com/560cd2f93a2e125f7094e723ed8eec0b"><img src="https://i.gyazo.com/560cd2f93a2e125f7094e723ed8eec0b.gif" alt="Image from Gyazo" width="778"/></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item pr-4 text-left flex-shrink-0">
+            <div class="card glass w-full max-w-xs mx-auto flex-shrink-0">
+              <div class="card-body justify-center items-center">
+                <h3 class="font-bold text-zinc-500 mb-3">感謝状詳細</h3>
+                <p class="text-xs text-zinc-500 mb-3">感謝状をXでシェアできます。<br>
+                ご自身の設定によってお相手へのリプライとして送ることも、誰に送ったのか伏せたままツイートすることも可能です。<br>
+                また、感謝状の編集やコメントの追加もできます。</p>
+                <a href="https://gyazo.com/231bcaf0eb8ff762834c3822182d63ae"><img src="https://i.gyazo.com/231bcaf0eb8ff762834c3822182d63ae.gif" alt="Image from Gyazo" width="778"/></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item pr-4 text-left flex-shrink-0">
+            <div class="card glass w-full max-w-xs mx-auto flex-shrink-0">
+              <div class="card-body justify-center items-center">
+                <h3 class="font-bold text-zinc-500 mb-3">アイテム一覧</h3>
+                <p class="text-xs text-zinc-500 mb-3">感謝状を3つ投稿すると、1つアイテムを獲得できます。<br>
+                獲得したアイテムは、アイテム一覧と「とある場所」で見ることができます。</p>
+                <a href="https://gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7"><img src="https://i.gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7.png" alt="Image from Gyazo" width="783"/></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
