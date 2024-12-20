@@ -1,9 +1,9 @@
 <footer class="bg-base-200 w-full">
   <div class="footer footer-center text-base-content p-10" style="background-color: rgba(254, 249, 195, 0.3);">
     <nav class="grid grid-flow-col gap-4 ">
-      <a class="link link-hover">プライバシーポリシー</a>
-      <a class="link link-hover">利用規約</a>
-      <a class="link link-hover">お問い合わせ</a>
+      <a class="link link-hover"><%= link_to "プライバシーポリシー", policy_path, class: "hover:underline", target: :_blank, rel: "noopener noreferrer" %></a>
+      <a class="link link-hover"><%= link_to "利用規約", terms_path, class: "hover:underline", target: :_blank, rel: "noopener noreferrer" %></a>
+      <a><%= link_to "お問い合わせフォーム", "https://forms.gle/c9XeNnnFS1qoL4Pm7", class: "hover:underline", target: :_blank, rel: "noopener noreferrer" %></a>
     </nav>
     <nav>
       <div class="grid grid-flow-col gap-4">
