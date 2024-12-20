@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   # get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
-  get 'usage_instructions' => 'pages#usage_instructions'
+  get 'statistic_pages/user_guide' => 'static_pages#user_guide', as: :user_guide
   get 'statistic_pages/policy' => 'static_pages#policy', as: :policy
   get 'statistic_pages/terms' => 'static_pages#terms', as: :terms
 
