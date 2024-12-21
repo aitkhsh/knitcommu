@@ -72,6 +72,7 @@ RSpec.configure do |config|
     Capybara.server_port = 4444
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
     Capybara.ignore_hidden_elements = false
+    Capybara.default_max_wait_time = 5
   end
 
   # Filter lines from Rails gems in backtraces.
@@ -81,11 +82,4 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # システムスペック実行前にテストを動かすブラウザを設定
-  config.before(:each, type: :system) do
-    driven_by :remote_chrome
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 4444
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-    Capybara.ignore_hidden_elements = false
-  end
 end
