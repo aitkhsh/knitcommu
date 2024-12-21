@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :system do
+  include LoginMacros
   let(:user) { create(:user) }
 
   describe "ログイン前" do
@@ -29,15 +30,7 @@ RSpec.describe "UserSessions", type: :system do
   describe "ログイン後" do
     context "ログアウトボタンをクリック" do
       it "ログアウト処理が成功する" do
-        # ****login_as(user)が機能しないため、ログインプロセスを記入****
-        visit login_path
-        fill_in "メールアドレス", with: user.email
-        fill_in "パスワード", with: "password"
-        click_button "ログイン"
-        expect(page).to have_content "ログインしました"
-        expect(current_path).to eq boards_path
-        # ****ログインプロセスを記入 ここまで****
-        visit boards_path
+        login_as(user)
         # ドロップダウンを開く
         find('.btn-circle.avatar').click
 
