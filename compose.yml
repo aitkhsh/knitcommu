@@ -40,6 +40,7 @@ services:
     image: seleniarm/standalone-chromium:latest
     ports:
       - 4444:4444
+    shm_size: 2g # クラッシュ防止に共有メモリサイズを2GBに増やす
   # ここまで
 volumes:
   bundle_data:
