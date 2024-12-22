@@ -1,5 +1,5 @@
 <% content_for(:title, t('boards.index.title')) %>
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 min-h-screen">
   <!-- ... -->
   <!-- 検索フォーム -->
   <%= render 'shared/search_board_form', search_form: @search_form %>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <!-- 掲示板一覧 -->
-  <div class="flex flex-wrap min-h-screen justify-center gap-6">
+  <div class="flex flex-wrap justify-center gap-6">
     <% if @boards.present? %>
       <%= render @boards %>
     <% else %>
