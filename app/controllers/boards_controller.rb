@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :require_login, only: %i[new create edit update]
-  before_action :set_board, only: %i[edit update destroy]
+  before_action :set_board, only: %i[edit update]
   before_action :set_search_boards_form, only: %i[index search]
   skip_before_action :require_login, only: %i[index show]
   skip_before_action :prepare_meta_tags, only: :share
