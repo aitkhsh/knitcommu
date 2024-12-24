@@ -229,11 +229,12 @@ class BoardsController < ApplicationController
     end
   end
 
-  def destroy
-    board = current_user.boards.find(params[:id])
-    board.destroy!
-    redirect_to boards_path, notice: t("defaults.flash_message.deleted", item: Board.model_name.human), status: :see_other
-  end
+  # 感謝状削除機能保留
+  # def destroy
+  #   board = current_user.boards.find(params[:id])
+  #   board.destroy!
+  #   redirect_to boards_path, notice: t("defaults.flash_message.deleted", item: Board.model_name.human), status: :see_other
+  # end
 
   def search
     @boards = @search_form.search.includes(:user)

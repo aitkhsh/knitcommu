@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   resources :users, only: %i[new create show]
-  resource :profile, only: %i[show edit update destroy]
+  resource :profile, only: %i[show edit update] # 削除機能保留のため、destroyアクションの削除
   resources :pictures, only: %i[index create] do
     post :select_image, on: :collection # select_imageアクション用のルート
   end
+
+  # 感謝状削除機能保留のため、destroyアクションの削除
   resources :boards, only: %i[index new create show edit update destroy] do
     resources :comments, only: %i[create show edit destroy], shallow: true
     collection do
