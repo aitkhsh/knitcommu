@@ -19,7 +19,6 @@ class PicturesController < ApplicationController
         # プロンプトを生成して画像を生成
         prompt = params[:tag_names]
         response = OpenAiService.generate_image(prompt)
-        # puts response.body
 
         if response.key?("error")
           session[:error] = response["error"]
@@ -30,7 +29,7 @@ class PicturesController < ApplicationController
             session[:image_urls] << data["url"]
           end
 
-          # 画像が3つ生成されたか確認
+          # 画像が2つ生成されたか確認
           if session[:image_urls].size == MAX_IMAGES
             session[:error] = nil
             flash[:notice] = "画像が全て生成されました！"
