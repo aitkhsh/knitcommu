@@ -13,7 +13,6 @@ class OpenAiService
                       body: {
                         model: "dall-e-3",
                         prompt: "A stuffed animal made of woolen yarn wearing woolen clothes, reflecting the following as a specific motif. #{prompt}", # コントローラーから渡されたプロンプトを使用
-                        # prompt: "A stuffed animal made of woolen yarn wearing woolen clothes, reflecting the following as a specific motif.", # コントローラーから渡されたプロンプトを使用
                         size: size,
                         quality: quality,
                         n: n
