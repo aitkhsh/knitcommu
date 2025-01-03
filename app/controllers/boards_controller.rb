@@ -12,7 +12,6 @@ class BoardsController < ApplicationController
     else
       Board.includes(:user).order(created_at: :desc).page(params[:page])
     end
-    # @boards = Board.includes(:user)
   end
 
   def new
@@ -23,6 +22,7 @@ class BoardsController < ApplicationController
     session[:image_file_path] = nil
     session[:image_url] = nil
 
+    # 値の有無をチェック
     logger.debug "Session title: #{session[:title]}"
     logger.debug "Session body: #{session[:body]}"
     logger.debug "Session tag_names: #{session[:tag_names]}"
@@ -40,42 +40,6 @@ class BoardsController < ApplicationController
   end
 
   def create
-    # `session[:image_file_path]` に画像パスがあるか確認
-    # if session[:image_file_path].present?
-    #   # 一時ファイルのパスを開いてCarrierWaveに渡す
-    #   image_file = File.open(session[:image_file_path])
-
-    #   if image_file.nil?
-    #     flash[:danger] = "画像のダウンロードに失敗しました。再度お試しください。"
-    #     redirect_to new_board_path and return
-    #   end
-
-    #   # ダウンロードした画像を CarrierWave 経由で保存
-    #   @board = Board.new(
-    #     title: session[:title],
-    #     body: session[:body],
-    #     board_image: image_file # 一時ファイルをCarrierWaveの `board_image` にセット
-    #     )
-
-    #   if @board.save_with_tags(tag_names: params.dig(:board, :tag_names).split(',').uniq)
-    #     # セッションをクリア
-    #     session[:title] = nil
-    #     session[:body] = nil
-    #     session[:tag_names] = nil
-    #     session[:image_file_path] = nil
-
-    #     # 一時ファイルを閉じて削除
-    #     image_file.close
-    #     File.delete(session[:image_file_path]) if File.exist?(session[:image_file_path])
-
-    #     image_file.unlink
-
-    #     redirect_to boards_path, success: t("defaults.flash_message.created", item: Board.model_name.human)
-    #   else
-    #     flash.now[:danger] = t("defaults.flash_message.not_created", item: Board.model_name.human)
-    #     render :new, status: :unprocessable_entity
-    #   end
-    # else
     # 必要な情報が揃っていない場合、保存用のセッションにリダイレクト
     redirect_to board_sessions_save_path(
       title: params[:board][:title],
