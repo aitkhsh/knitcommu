@@ -33,17 +33,17 @@ RUNTEQコミュニティの20〜30代前半のメンバーを想定していま�
 
 | 感謝状一覧 | 感謝状作成 |
 | ---- | ---- |
-| <a href="https://gyazo.com/2d63b067bfe25e94d01c039a0867f0ef"><img src="https://i.gyazo.com/2d63b067bfe25e94d01c039a0867f0ef.gif" alt="Image from Gyazo" width="490"/></a> | <img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="感謝状作成" width="490"> |
+| <a href="https://gyazo.com/2d63b067bfe25e94d01c039a0867f0ef"><img src="https://i.gyazo.com/2d63b067bfe25e94d01c039a0867f0ef.gif" alt="Image from Gyazo" width="490"/></a> | <a href="https://gyazo.com/e8287ad452d4158071c87352fa0a1d36"><img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="Image from Gyazo" width="490"/></a> |
 | みんなのそれぞれの感謝と相手を思って作られたニットの画像が閲覧できます。 | ログイン後、1ヶ月に2回、感謝のメッセージとAI画像の感謝状作成ができます。|
 
 | 画像生成 | アイテム一覧 |
 | ---- | ---- |
-| <img src="https://i.gyazo.com/560cd2f93a2e125f7094e723ed8eec0b.gif" alt="画像生成" width="490"> | <img src="https://i.gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7.png" alt="アイテム一覧" width="490"> |
+| <a href="https://gyazo.com/560cd2f93a2e125f7094e723ed8eec0b"><img src="https://i.gyazo.com/560cd2f93a2e125f7094e723ed8eec0b.gif" alt="Image from Gyazo" width="490"/></a> | <a href="https://gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7"><img src="https://i.gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7.png" alt="Image from Gyazo" width="490"/></a> |
 | キーワードをもとに画像を最大2枚生成できます。 | 感謝状を3つ投稿すると、アイテムを1つ獲得できます。 |
 
 | 感謝状詳細 | Xシェア |
 | ---- | ---- |
-| <img src="https://i.gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b.gif" alt="感謝状詳細" width="490"> | <img src="https://i.gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4.png" alt="Xシェア" width="490"> |
+| <a href="https://gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b"><img src="https://i.gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b.gif" alt="Image from Gyazo" width="490"/></a> | <a href="https://gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4"><img src="https://i.gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4.png" alt="Image from Gyazo" width="490"/></a> |
 | 感謝状をXでシェア、投稿の編集、コメントができます。 | ご自身の生成された画像によって中心の画像が変わります。 |
 
 
