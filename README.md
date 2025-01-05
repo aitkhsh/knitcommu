@@ -30,21 +30,22 @@ RUNTEQコミュニティの20〜30代前半のメンバーを想定していま�
 まだ先の話になりますが、ゆくゆくは、RUNTEQ以外のコミュニティにも広がって行けば嬉しいですが、まずはターゲットを絞りRUNTEQコミュニティとします。<br>
 
 ## サービス概要
+
 | 感謝状一覧 | 感謝状作成 |
 | ---- | ---- |
-| <a href="https://gyazo.com/368f70d9a9c9aa7e37122c29563d953e"><video width="490" autoplay muted loop playsinline controls><source src="https://i.gyazo.com/368f70d9a9c9aa7e37122c29563d953e.mp4" type="video/mp4"/></video></a> | <a href="https://gyazo.com/e8287ad452d4158071c87352fa0a1d36"><img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="Image from Gyazo" width="490"/></a> |
+| <video width="490" autoplay muted loop playsinline controls><source src="https://i.gyazo.com/368f70d9a9c9aa7e37122c29563d953e.mp4" type="video/mp4"></video> | <img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="感謝状作成" width="490"> |
 | みんなのそれぞれの感謝と相手を思って作られたニットの画像が閲覧できます。検索機能やページネーション機能があります。 | ログイン後、1ヶ月に2回、感謝のメッセージとニットの画像作成の感謝状作成ができます。テキスト入力後に登録ボタンを押すと、画像生成ページにアクセスします。 |
-
 
 | 画像生成 | アイテム一覧 |
 | ---- | ---- |
-| <a href="https://gyazo.com/560cd2f93a2e125f7094e723ed8eec0b"><img src="https://i.gyazo.com/560cd2f93a2e125f7094e723ed8eec0b.gif" alt="Image from Gyazo" width="490"/></a> | <a href="https://gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7"><img src="https://i.gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7.png" alt="Image from Gyazo" width="490"/></a> |
+| <img src="https://i.gyazo.com/560cd2f93a2e125f7094e723ed8eec0b.gif" alt="画像生成" width="490"> | <img src="https://i.gyazo.com/d48ceeb9fed887f4e0d7900cafea06f7.png" alt="アイテム一覧" width="490"> |
 | キーワードをもとに画像を最大2枚生成できます。ラジオボタンで一つだけ選択し、作成ボタンをクリックすると、画像付きの感謝状が投稿できます。 | 感謝状を3つ投稿すると、アイテムを1つ獲得できます。獲得したアイテムは、アイテム一覧と「とある場所」で見ることができます。 |
 
 | 感謝状詳細 | Xシェア |
 | ---- | ---- |
-| <a href="https://gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b"><img src="https://i.gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b.gif" alt="Image from Gyazo" width="490"/></a> | <a href="https://gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4"><img src="https://i.gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4.png" alt="Image from Gyazo" width="601"/></a> |
+| <img src="https://i.gyazo.com/bd44be424fb6bfa3ea7a49bc86f13c9b.gif" alt="感謝状詳細" width="490"> | <img src="https://i.gyazo.com/d0d2f9082aa4572b1e4792d5333dbfd4.png" alt="Xシェア" width="490"> |
 | 感謝状詳細ページで感謝状をXでシェア、投稿の編集、コメントができます。ご自身の設定によってお相手へのリプライとして送ることも、誰に送ったのか伏せたままツイートすることも可能です。 | 感謝状のXでシェア画面です。ご自身の生成された画像によって中心の画像が変わります。感謝状をXシェアによってお相手にプレゼントすることができます。 |
+
 
 ## 技術スタック
 | カテゴリ | 技術 |
