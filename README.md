@@ -33,7 +33,7 @@ RUNTEQコミュニティの20〜30代前半のメンバーを想定していま�
 
 | 感謝状一覧 | 感謝状作成 |
 |:-----------:|:------------:|
-| <img src="https://i.gyazo.com/4e436258103819a4f115afa92095a46d.gif" alt="Image from Gyazo" width="300"/></a> | <img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="Image from Gyazo" width="300"/> |
+| <img src="https://i.gyazo.com/5f19b94a6aa0560b2aed79c7bd8e1f1e.png" alt="Image from Gyazo" width="300"/> | <img src="https://i.gyazo.com/e8287ad452d4158071c87352fa0a1d36.gif" alt="Image from Gyazo" width="300"/> |
 | みんなのそれぞれの感謝と相手を思って作られたニットの画像が閲覧できます。 | ログイン後、1ヶ月に2回、感謝のメッセージとAI画像の感謝状作成ができます。|
 
 | 画像生成 | アイテム一覧 |
