@@ -2,7 +2,7 @@
 # あむ編むコミュ！
 （略してあむコミュ！）
 ## サービスURL: https://amucommu.com/
-
+## 技術記事URL: https://qiita.com/aitkhsh/items/8986049ec094ceed76f9
 [![Image from Gyazo](https://i.gyazo.com/4c08aca9c043423da3871226f171a3d4.png)](https://gyazo.com/4c08aca9c043423da3871226f171a3d4)
 
 ## サービス概要
