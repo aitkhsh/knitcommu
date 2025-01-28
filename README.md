@@ -208,4 +208,4 @@ Google Analytics<br>
 
 # ER 図
 [amucommu - ER 図](https://dbdiagram.io/d/amuamucommu-66fbcc04fb079c7ebdf2a87d)
-[![Image from Gyazo](https://i.gyazo.com/5129df85791a3511b5c64c480ab335c7.png)](https://gyazo.com/5129df85791a3511b5c64c480ab335c7)
+[![Image from Gyazo](https://i.gyazo.com/2d667e81722648761fc6046ec11e298b.png)](https://gyazo.com/2d667e81722648761fc6046ec11e298b)
