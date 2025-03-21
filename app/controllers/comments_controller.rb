@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  helper_method :prepare_meta_tags
   skip_before_action :require_login, only: %i[show]
 
   def create
@@ -14,7 +13,6 @@ class CommentsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @comment = Comment.find(params[:id])  # ボードに関連するコメントを取得
-    # prepare_meta_tags(@comment) #ここで渡された引数が、下記のprepare_meta_tagsアクションにいく。
     @comments = @board.comments.includes(:user).order(created_at: :desc)
   end
 
