@@ -2,9 +2,12 @@ class Board < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }
   belongs_to :user
-  mount_uploader :board_image, BoardImageUploader
-  has_many :comments, dependent: :destroy
 
+  # CarrierWave の設定
+  mount_uploader :board_image, BoardImageUploader
+  mount_uploader :ogp, OgpUploader
+
+  has_many :comments, dependent: :destroy
   has_many :boardtags, dependent: :destroy
   has_many :tags, through: :boardtags
 
@@ -14,6 +17,14 @@ class Board < ApplicationRecord
   scope :name_contain, ->(word) { joins(:user).where("users.name LIKE ?", "%#{word}%") }
   scope :tag_contain, ->(word) { joins(:tags).where("tags.name LIKE ?", "%#{word}%") }
   scope :this_month, -> { where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month) }
+
+  def image_path
+    if self.board_image.present?
+      Rails.env.production? ? self.board_image.url : self.board_image.path
+    else
+      nil
+    end
+  end
 
   def save_with_tags(tag_names:)
     ActiveRecord::Base.transaction do
