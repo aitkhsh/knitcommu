@@ -13,7 +13,7 @@
         <%= image_tag @board.board_image.url if @board.board_image.present? %>
       </figure>
       <div class="card-body">
-        <h2 class="card-title">Dear, <%= @board.title %></h2>
+        <h2 class="card-title"><%= @board.title %>へ</h2>
         <p class="text-gray-500"><%= @board.body %></p>
         <p class="text-gray-500"><%= render @board.tags %></p>
         <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
