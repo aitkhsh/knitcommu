@@ -9,7 +9,7 @@
         <%= comment.user.name %>
         <% end %>
       </h3>
-      <p class="text-xs"><%= comment.body %></p>
+      <p class="text-xs"><%= safe_join(comment.body.split("\n"),tag(:br)) %></p>
     </div>
   </div>
 </div>
