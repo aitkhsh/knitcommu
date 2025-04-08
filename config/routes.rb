@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   get "statistic_pages/user_guide" => "static_pages#user_guide", as: :user_guide
   get "statistic_pages/policy" => "static_pages#policy", as: :policy
-  get "statistic_pages/terms' => 'static_pages#terms", as: :terms
+  get "statistic_pages/terms" => "static_pages#terms", as: :terms
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
