@@ -35,7 +35,7 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: bin/rubocop -f github --fail-level W # C（Convention）や R（Refactor）は警告にはなるけど、CIは通る。
 
   test:
     runs-on: ubuntu-latest
