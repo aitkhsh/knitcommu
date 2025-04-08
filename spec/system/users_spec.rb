@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :system do
   include LoginMacros
   let(:user) { create(:user) }
-  let(:other_user) { create(:user, name: "defg", email: "defg@example.com", password: "password", password_confirmation: "password")}
+  let(:other_user) { create(:user, name: "defg", email: "defg@example.com", password: "password", password_confirmation: "password") }
 
   describe "ログイン前" do
     context "ユーザー新規登録" do
